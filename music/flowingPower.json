@@ -1,0 +1,41 @@
+{
+	"album": "Flowing Power",
+	"path": "crimzegaSulvic/flowingPower",
+	"songs": [{
+		"file": "ultimize",
+		"name": "Ultimize"
+	}, {
+		"file": "comeFollow",
+		"name": "Come Follow"
+	}, {
+		"file": "planetWTF",
+		"name": "Planet WTF"
+	}, {
+		"file": "simplisticReality",
+		"name": "Simplistic Reality"
+	}, {
+		"file": "angelicDemons",
+		"name": "Angelic Demons"
+	}, {
+		"file": "electrificEpicness",
+		"name": "Electrific Epicness"
+	}, {
+		"file": "lightningJustice",
+		"name": "Lightning Justice"
+	}, {
+		"file": "staticRealization",
+		"name": "Static Realization"
+	}, {
+		"file": "somewhat-emotionalRollerCoaster",
+		"name": "(Somewhat) Emotional Roller Coaster"
+	}, {
+		"file": "traDaagShunt",
+		"name": "Tra-daag Shunt"
+	}, {
+		"file": "nameMePlease-official",
+		"name": "Name Me Please (Official Title)"
+	}, {
+		"file": "gamingREP",
+		"name": "Gaming R.E.P."
+	}]
+}
