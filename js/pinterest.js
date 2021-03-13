@@ -15,5 +15,3 @@ var waitForElem = (sel, func, timeout = 10000, checkFreq = 1000) => {
   };
   loop();
 };
-
-waitForElem('body > div:nth-child(10)', (elem) => {elem.style.display = 'none'; }, 20000);
