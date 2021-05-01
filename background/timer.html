@@ -40,7 +40,6 @@
 			
 			var appendTime = () => {
 				spanElem.innerHTML = SulvicUtils.convertToTimestamp(currTime, false);
-				console.log(SulvicUtils.convertToTimestamp(currTime, false));
 				var color = Math.roundRange(0, 0xFFFFFF);
 				spanElem.style.color = '#' + color.toString(16);
 				document.body.style.backgroundColor = '#' + (color ^ 0xFFFFFF).toString(16);
