@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Crimzega's AFK Clock</title>
+		<style>
+		html, body{
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+		body{
+			transition: background-color 1s;
+		}
+		.afk-time{
+			font-family: "CS Mulan";
+			font-size: 128px;
+			left: 50%;
+			position: fixed;
+			top: 50%;
+			transition: color 1s;
+			transform: translate(-50%, -50%);
+		}
+		.afk-finish{
+			font-size: 16px;
+			left: 50%;
+			position: fixed;
+			top: 90%;
+			transform: translate(-50%, -50%);
+		}
+		</style>
+	</head>
+	<body>
+		<span class="afk-time">0</span>
+		<button class="afk-finish">I have returned</button>
+		<script src="../js/defscr.js"></script>
+		<script>
+		(function(){
+			var btnElem = document.querySelector('.afk-finish'), spanElem = document.querySelector('.afk-time');
+			var clockActive = true, intervalID, currTime = 0;
+			
+			var appendTime = () => {
+				spanElem.innerHTML = SulvicUtils.convertToTimestamp(currTime, false);
+				console.log(SulvicUtils.convertToTimestamp(currTime, false));
+				var color = Math.roundRange(0, 0xFFFFFF);
+				spanElem.style.color = '#' + color.toString(16);
+				document.body.style.backgroundColor = '#' + (color ^ 0xFFFFFF).toString(16);
+			}
+			
+			var resetClock = () => {
+				clearInterval(intervalID);
+				currTime = 0;
+				appendTime();
+			}
+			
+			var runClock = () => {
+				currTime += 1000;
+				appendTime();
+			}
+			
+			var updateInfo = () => {
+				if(!clockActive) {
+					btnElem.innerHTML = 'I must go';
+					resetClock();
+				}
+				else {
+					btnElem.innerHTML = 'I have returned';
+					intervalID = setInterval(runClock, 1000);
+				}
+			}
+			
+			btnElem.addEventListener('click', () => {
+				clockActive = !clockActive;
+				updateInfo();
+			});
+			
+			updateInfo();
+		})();
+		</script>
+	</body>
+</html>
