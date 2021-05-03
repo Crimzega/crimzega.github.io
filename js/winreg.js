@@ -1,9 +1,11 @@
-var elem = document.createElement('textarea'),  elem1 = document.createElement('input'), elem2 = document.createElement('button');
+var elem = document.createElement('textarea'), elem1 = document.createElement('input'), elem2 = document.createElement('button'), elem3 = document.createElement('input');
 elem2.innerText = 'Convert to Windows Extends String Registry Type';
 
 elem.style.width = '600px';
 elem.style.height = '200px';
-elem1.style.width = '400px';
+elem1.style.width = elem3.style.width = '400px';
+elem1.placeholder = 'Value name [leave empty for (Default)]';
+elem3.placeholder = 'Value data';
 
 class WindowsRegistry{
 
@@ -33,10 +35,11 @@ class WindowsRegistry{
 }
 
 elem2.onclick = () => {
-    elem.value = WindowsRegistry.extendedString(elem1.value);
+    elem.value = WindowsRegistry.extendedString(elem3.value, elem1.value);
 };
 
 document.body.appendChild(elem1);
+document.body.appendChild(elem3);
 document.body.appendChild(document.createElement('br'));
 document.body.appendChild(elem2);
 document.body.appendChild(document.createElement('br'));
