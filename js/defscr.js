@@ -1,3 +1,4 @@
+var sleep = (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); };
 Math.clamp = (value, min, max) => { return Math.min(Math.max(value, min), max); };
 Math.range = (min, max) => { return Math.random() * (max - min) + min; };
 Math.roundRange = (min, max) => { return Math.round(Math.range(min, max)); }
@@ -41,31 +42,29 @@ SulvicUtils.getStringFromBytes = (...values) => {
 	return temp;
 }
 
-String.format = String.format || function(format, ...args){ return format.replace(/{(\d*)}/g, (match, index) => { return typeof args[index] != undefined? args[index]: match; }); };
-
-String.fromBase64 = (str) => { return atob(str); }
-
-String.toBase64 = (str) => { return btoa(str); }
-
-(() => {
-	
-	function requestFileData(filePath, requestType = 'text'){
+SulvicUtils.getFile = async (url, type = 'blob') => {
+	function getData(){
 		return new Promise((resolve, reject) => {
 			var xhr = new XMLHttpRequest();
-			xhr.open('GET', filePath);
-			xhr.requestType = requestType;
-			xhr.onload = () => {
-				if(this.status == 200 && this.readyState == 4) resolve(this.response);
-				else reject({status: this.status, statusText: this.statusText});
+			xhr.open('GET' url);
+			xhr.responseType = type;
+			xhr.onload = function(){ console.log(`Attempting to loaf from ${url}`); };
+			xhr.onreadystatechange = function(){
+				if(this.readyState == XMLHttpRequest.DONE){
+					if(this.status >= 200 && this.status < 300) resolve(type == 'text'? this.responseText: this.response);
+					else reject({ info: 'An error has occured', message: this.statusText, response: this.status });
+				}
 			};
-			xhr.onerror = () => { reject({status: this.status, statusText: this.statusText}); };
+			xhr.onerror = function(){ reject({ info: 'An error has occured', message: this.statusText, response: this.status }); };
 			xhr.send();
 		});
 	}
-	
-	SulvicUtils.getFile = async function(filePath, requestType = 'text'){
-		var result = await requestFileData(filePath, requestType);
-		return result;
-	}
-	
-})();
+	var data = await getData();
+	return data;
+}
+
+String.format = String.format || function(format, ...args){ return format.replace(/{(\d*)}/g, (match, index) => { return typeof args[index] != undefined? args[index]: match; }); };
+
+String.fromBase64 = atob
+
+String.toBase64 = btoa
