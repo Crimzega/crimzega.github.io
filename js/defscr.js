@@ -46,7 +46,7 @@ SulvicUtils.getFile = async (url, type = 'blob') => {
 	function getData(){
 		return new Promise((resolve, reject) => {
 			var xhr = new XMLHttpRequest();
-			xhr.open('GET' url);
+			xhr.open('GET', url);
 			xhr.responseType = type;
 			xhr.onload = function(){ console.log(`Attempting to loaf from ${url}`); };
 			xhr.onreadystatechange = function(){
