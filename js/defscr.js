@@ -48,7 +48,7 @@ SulvicUtils.getFile = async (url, type = 'blob') => {
 			var xhr = new XMLHttpRequest();
 			xhr.open('GET', url);
 			xhr.responseType = type;
-			xhr.onload = function(){ console.log(`Attempting to loaf from ${url}`); };
+			xhr.onload = function(){ console.log(`Attempting to load from ${url}`); };
 			xhr.onreadystatechange = function(){
 				if(this.readyState == XMLHttpRequest.DONE){
 					if(this.status >= 200 && this.status < 300) resolve(type == 'text'? this.responseText: this.response);
