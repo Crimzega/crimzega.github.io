@@ -205,7 +205,6 @@ function DeObfuscate_String_and_Create_Form_With_Mhoa_URL(d1, d2, FileName, File
     }
 	
 	var ta = document.createElement('textarea');
-	ta.style.color='white';
 	ta.value = d1 + "\n\n\n" + d2 + "\n\n\n" + FileName + "\n\n\n" + FileSize;
 	document.body.appendChild(ta);
 }
