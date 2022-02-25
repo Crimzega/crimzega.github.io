@@ -39,5 +39,9 @@
 			</nav>
 		</footer>
 		<script src="site_core/base.js"></script>
+		<script>
+		var query = location.search;
+		if(query) document.title += " | " + String.capitalize(new URLSearchParams(query).get('data'));
+		</script>
 	</body>
 </html>

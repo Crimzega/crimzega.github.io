@@ -63,6 +63,10 @@ SulvicUtils.getFile = async (url, type = 'blob') => {
 	return data;
 }
 
+String.capitalize = (str) => {
+	return str..charAt().toUpperCase() + str.substr(1);
+}
+
 String.format = String.format || function(format, ...args){ return format.replace(/{(\d*)}/g, (match, index) => { return typeof args[index] != undefined? args[index]: match; }); };
 
 String.fromBase64 = atob
