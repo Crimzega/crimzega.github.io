@@ -2,7 +2,7 @@
 	"album": "Yet Another Poppy Song (Single)",
 	"path": "crimzegaSulvic/yetAnotherPoppySong",
 	"songs": [{
-		"": "yetAnotherPoppySong",
-		"": "Yet Another Poppy Song",
+		"file": "yetAnotherPoppySong",
+		"name": "Yet Another Poppy Song"
 	}]
 }
