@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Entry>
+		<Id>haxe3setup</Id>
+		<Name>Haxe &amp; Neko (x86)</Name>
+		<Version>4.2.5</Version>
+		<Build>1</Build>
+		<Desc>Haxe 4 and Neko virtual machine 32-bit installer</Desc>
+		<Group>Compilers</Group>
+		<Bundles>
+			<Bundle>Haxe</Bundle>
+		</Bundles>
+		<Type>Executable</Type>
+		<Info>https://haxe.org/</Info>
+		<Urls>
+			<Url>https://github.com/HaxeFoundation/haxe/releases/download/4.2.5/haxe-4.2.5-win.exe</Url>
+		</Urls>
+	</Entry>
+	<Entry>
+		<Id>haxe3setup</Id>
+		<Name>Haxe &amp; Neko (x64)</Name>
+		<Version>4.2.5</Version>
+		<Build>1</Build>
+		<Desc>Haxe 4 and Neko virtual machine 64-bit installer</Desc>
+		<Group>Compilers</Group>
+		<Bundles>
+			<Bundle>Haxe</Bundle>
+		</Bundles>
+		<Type>Executable</Type>
+		<Info>https://haxe.org/</Info>
+		<Urls>
+			<Url>https://github.com/HaxeFoundation/haxe/releases/download/4.2.5/haxe-4.2.5-win64.exe</Url>
+		</Urls>
+	</Entry>
+	<Entry>
+		<id>flexsdk</id>
+		<Name>Flex SDK (Old)</Name>
+		<Version>4.6.0</Version>
+		<Build>23201B</Build>
+		<Desc>Adobe Flex SDK, includes AIR 3.1 SDK</Desc>
+		<Group>Compilers</Group>
+		<Info>https://web.archive.org/web/20190102014942/http://www.adobe.com/devnet/flex.html</Info>
+		<Urls>
+			<Url>http://fpdownload.adobe.com/pub/flex/sdk/builds/flex4.6/flex_sdk_4.6.0.23201B.zip</Url>
+			<Url>http://www.flashdevelop.org/appman/frameworks_flexsdk_9-21.zip</Url>
+		</Urls>
+	</Entry>
+	<Entry>
+		<Id>flexairsdk</Id>
+		<Name>Flex SDK &amp; AIR SDK</Name>
+		<Version>4.6.0, 32.0.0</Version>
+		<Build>23201B, 89</Build>
+		<Desc>Adobe Flex SDK merged with Adobe AIR SDK</Desc>
+		<Info>https://web.archive.org/web/20190122071506/http://www.adobe.com/devnet/air.html</Info>
+		<Group>Compilers</Group>
+		<Bundles>
+			<Bundle>AS3</Bundle>
+		</Bundles>
+		<Urls>
+			<Url>http://fpdownload.adobe.com/pub/flex/sdk/builds/flex4.6/flex_sdk_4.6.0.23201B.zip</Url>
+			<Url>http://airdownload.adobe.com/air/win/download/32.0/AdobeAIRSDK.zip</Url>
+			<Url>http://www.flashdevelop.org/appman/frameworks_flexsdk_9-21.zip</Url>
+		</Urls>
+	</Entry>
+	<Entry>
+		<Id>ascsdk</Id>
+		<Name>AIR SDK &amp; ASC 2.0</Name>
+		<Version>32.0.0</Version>
+		<Build>89</Build>
+		<Desc>Adobe AIR SDK with ASC 2.0</Desc>
+		<Info>https://web.archive.org/web/20190122071506/http://www.adobe.com/devnet/air.html</Info>
+		<Group>Compilers</Group>
+		<Bundles>
+			<Bundle>AIR</Bundle>
+		</Bundles>
+		<Urls>
+			<Url>http://airdownload.adobe.com/air/win/download/32.0/AIRSDK_Compiler.zip</Url>
+			<Url>http://www.flashdevelop.org/appman/frameworks_flexsdk_9-32.zip</Url>
+		</Urls>
+	</Entry>
+	<Entry>
+		<Id>aflexsdk</Id>
+		<Name>Apache Flex SDK</Name>
+		<Version>3.3.2</Version>
+		<Build>1</Build>
+		<Desc>Apache Flex SDK and dependencies Installer</Desc>
+		<Group>Compilers</Group>
+		<Bundles>
+			<Bundle>Flex</Bundle>
+		</Bundles>
+		<Type>Executable</Type>
+		<Info>https://flex.apache.org</Info>
+		<Urls>
+			<Url>https://www.apache.org/dyn/closer.lua/flex/installer/3.3.2/binaries/apache-flex-sdk-installer-3.3.2-bin.exe</Url>
+		</Urls>
+	</Entry>
+</Entries>
