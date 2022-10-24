@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /defs/exts/
+Disallow: /extras/
+Disallow: /old/

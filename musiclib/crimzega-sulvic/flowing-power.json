@@ -1,0 +1,40 @@
+{
+	"album": "Flowing Power",
+	"songs": [{
+		"file": "ultimize",
+		"name": "Ultimize"
+	}, {
+		"file": "come-follow",
+		"name": "Come Follow"
+	}, {
+		"file": "planet-wtf",
+		"name": "Planet WTF"
+	}, {
+		"file": "simplistic-reality",
+		"name": "Simplistic Reality"
+	}, {
+		"file": "angelic-demons",
+		"name": "Algelic Demons"
+	}, {
+		"file": "electrific-epicness",
+		"name": "Electrific Epicness"
+	}, {
+		"file": "lightning-justice",
+		"name": "Lightning Justice"
+	}, {
+		"file": "static-realization",
+		"name": "Static Realization"
+	}, {
+		"file": "somewhat-emotional-roller-coaster",
+		"name": "(Somewhat) Emotional Roller Coaster"
+	}, {
+		"file": "tra-daag-shunt",
+		"name": "Tra-daag Shunt"
+	}, {
+		"file": "name-me-please-official",
+		"name": "Name Me Please (Official Title)"
+	}, {
+		"file": "gaming-rep",
+		"name": "Gaming R.E.P"
+	}]
+}

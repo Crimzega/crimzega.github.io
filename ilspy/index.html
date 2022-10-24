@@ -1,86 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>ILSpy Decompiling: Proof of Accuracy (Sulvic_HK)</title>
+		<link class="codestyle" href="styles/androidstudio.css" rel="stylesheet" />
+		<link href="../defs/core.css" rel="stylesheet" />
+		<link href="cs-langs.css" rel="stylesheet" />
+		<title>ILSpy Decompilation: Accuracy Check (Sulvic_HK)</title>
 		<script src="highlight.pack.js"></script>
-		<link class="codestyle" rel="stylesheet" href="styles/androidstudio.css" />
-		<style>
-		html, body{
-			margin: 0;
-			width: 100%;
-			height: 100%;
-		}
-		h2, h3{
-			text-align: center;
-		}
-		#code-view{
-			background: rgba(128, 128, 128, 0.5);
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			font-size: 13px;
-			grid-column-gap: 1em;
-			margin: 0px auto;
-			margin-bottom: 2em;
-			padding: 1em;
-			width: 90em;
-		}
-		#file-select{
-			height: 40px;
-			display: block;
-			margin: 0.75em auto;
-		}
-		#code-view pre{
-			display: inline-grid;
-			height: 50em;
-			margin: 0;
-		}
-		#source-code{
-			tab-size: 4;
-		}
-		#source-code{}
-		</style>
+		<script src="../defs/FileSaver.min.js"></script>
+		<script src="../defs/core.js" type="module"></script>
+		<script src="cs-langs.js" type="module"></script>
 	</head>
 	<body>
-		<h2>ILSpy Decompiling: Proof of Accuracy (Sulvic_HK)</h2>
+		<h1>ILSpy Decompilation: Accuracy Check (Sulvic_HK)</h1>
 		<select id="file-select">
-			<option value="SulvicHK.cs">Main File</option>
-			<option value="Handlers/FlowerHandler.cs">Flower Handler</option>
-			<option value="Handlers/NotchHandler.cs">Notch Handler</option>
+			<option value="sulvic-hk.cs">Main File</option>
+			<option value="handlers/flower-handler.cs">Flower Handler</option>
+			<option value="handlers/notch-handler.cs">Notch Handler</option>
 		</select>
-		<div id="code-view">
+		<code-view>
 			<h3>Decompiled</h3>
-			<h3>Actual</h3>
-			<pre><code class="decomp hljs csharp" id="source-code"></code></pre>
-			<pre><code class="actual hljs csharp" id="source-code"></code></pre>
-		</div>
+			<h3>Source Code</h3>
+			<pre><code class="decomp hljs csharp" id="file-code"></code></pre>
+			<pre><code class="source hljs csharp" id="file-code"></code></pre>
+		</code-view>
 	</body>
-	<script>
-	(function(){
-		var actualOut = document.querySelector("#source-code.actual"), decompOut = document.querySelector("#source-code.decomp");
-		var selector = document.querySelector("#file-select");
-		var actualReader = new XMLHttpRequest(),decompReader = new XMLHttpRequest();
-		
-		decompReader.onload = function(){
-			decompOut.innerHTML = this.responseText;
-			hljs.highlightBlock(decompOut);
-		}
-		
-		actualReader.onload = function(){
-			actualOut.innerHTML = this.responseText;
-			hljs.highlightBlock(actualOut);
-		}
-		
-		function getSelection(){
-			var file = selector.value;
-			decompReader.open("GET", "ILSpy/" + file);
-			actualReader.open("GET", "Sulvic/" + file);
-			decompReader.send();
-			actualReader.send();
-		}
-		
-		selector.onchange = function(){ getSelection(); }
-		
-		window.onload = function(){ getSelection(); }
-	})();
-	</script>
 </html>

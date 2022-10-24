@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg baseProfile="full" version="1.1" viewBox="0 0 192 148" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+	<radialGradient id="icon-back">
+		<stop offset="0%" stop-color="royalblue" />
+		<stop offset="64%" stop-color="aquamarine" />
+		<stop offset="78%" stop-color="blanchedalmond" />
+		<stop offset="100%" stop-color="gray" stop-opacity="0" />
+	</radialGradient>
+	<radialGradient id="icon-back2">
+		<stop offset="0%" stop-color="black" />
+		<stop offset="64%" stop-color="violet" />
+		<stop offset="78%" stop-color="deeppink" />
+		<stop offset="100%" stop-color="gray" stop-opacity="0" />
+	</radialGradient>
+	<style><![CDATA[
+	#home-link{
+		fill: chocolate;
+		font-size: 48px;
+		transform: rotateX(15deg) rotateY(-30deg) scale(0.67) translate(58px, 84px);
+	}
+	#home-link:hover{ fill: forestgreen; }
+	#home-link ellipse{ fill: url(#icon-back); }
+	#home-link:hover ellipse{ fill: url(#icon-back2) }
+	]]></style>
+	<a id="home-link" target="_parent" href="/">
+		<g id="graphic-link">
+			<ellipse cx="107" cy="53" fill="url(#icon-back)" rx="167" ry="113" />
+			<text x="0" y="43">Crimzega's</text>
+			<text x="30" y="94">Website</text>
+		</g>
+	</a>
+</svg>
