@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Crimzega's Maven Repos</title>
+	</head>
+	<body>
+		
+		<script>
+		class Gradle{
+
+			static getGradleData(str = 'com.test:example:1.0'){
+				var split = str.split(':');
+				var result = `${split[0].replaceAll('.', '/')}/${split[1]}/${split[2]}/${split[1]}-${split[2]}`;
+				if(split.length == 4) result += `-${split[3]}`;
+				return result;
+			}
+
+		}
+		</script>
+	</body>
+</html>
