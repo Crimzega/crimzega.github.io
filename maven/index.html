@@ -5,10 +5,11 @@
 	</head>
 	<body>
 		
+		<script src="../defs/core.js"></script>
 		<script>
 		class Gradle{
 
-			static getGradleData(str = 'com.test:example:1.0'){
+			static getPath(str = 'com.test:example:1.0'){
 				var split = str.split(':');
 				var result = `${split[0].replaceAll('.', '/')}/${split[1]}/${split[2]}/${split[1]}-${split[2]}`;
 				if(split.length == 4) result += `-${split[3]}`;
