@@ -4,19 +4,55 @@
 		<title>Crimzega's Maven Repos</title>
 	</head>
 	<body>
-		
-		<script src="../defs/core.js"></script>
-		<script>
-		class Gradle{
+		<sulvic-content>
+			
+		</sulvic-content>
+		<script type="module">
+'use strict';
 
-			static getPath(str = 'com.test:example:1.0'){
-				var split = str.split(':');
-				var result = `${split[0].replaceAll('.', '/')}/${split[1]}/${split[2]}/${split[1]}-${split[2]}`;
-				if(split.length == 4) result += `-${split[3]}`;
-				return result;
-			}
+import '../defs/core.js'
 
-		}
+class Gradle{
+
+	#gradleDir;
+	#gradleLib;
+	#libVersion;
+	#libSpecific;
+
+	constructor(str = 'com.test:example:1.0'){
+		var split = str.split(':');
+		this.#gradleDir = split[0];
+		this.#gradleLib = split[1];
+		this.#libVersion = split.length >= 3? split[2]: 'LATEST';
+		if(split.length == 4) this.#libSpecific = split[3];
+	}
+
+	getPath(){ `${this.#gradleDir}/${this.#gradleLib}/${this.#libVersion}`; }
+
+	#getFileBase(){
+		var result = `${this.getPath()}/${this.#gradleLib}-${this.#libVersion}`;
+		if(this.#libSpecific != null) result += `-${this.#libSpecific}`;
+		return result;
+	}
+
+	getJarChecksums(){
+		var jarBase = `${this.#getFileBase()}.jar`;
+		var result = {
+			md5: '',
+			sha1: '',
+			sha1256: '',
+			sha512: ''
+		};
+		SulvicIO.getFile(`${jarBase}.md5`).then(blob => { blob.text().then(txt => { result.md5 = txt }); });
+		SulvicIO.getFile(`${jarBase}.sha1`).then(blob => { blob.text().then(txt => { result.sha1 = txt }); });
+		SulvicIO.getFile(`${jarBase}.sha256`).then(blob => { blob.text().then(txt => { result.sha512 = txt }); });
+		SulvicIO.getFile(`${jarBase}.sha512`).then(blob => { blob.text().then(txt => { result.sha256 = txt }); });
+		return result;
+	}
+
+}
+
+export.Gradle = Gradle;
 		</script>
 	</body>
 </html>
