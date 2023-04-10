@@ -32,14 +32,14 @@
 	<body>
 		<span class="afk-time">0</span>
 		<button class="afk-finish">I have returned</button>
-		<script src="../js/defscr.js"></script>
+		<script src="../defs/core.js" type="module"></script>
 		<script>
 		(function(){
 			var btnElem = document.querySelector('.afk-finish'), spanElem = document.querySelector('.afk-time');
-			var clockActive = true, intervalID, currTime = 0;
+			var clockActive = true, intervalID, origTime = new Date();
 			
 			var appendTime = () => {
-				spanElem.innerHTML = SulvicUtils.convertToTimestamp(currTime, false);
+				spanElem.innerHTML = SulvicUtils.convertToTimestamp(clockActive? new Date().getTime() - origTime.getTime(): 0);
 				var color = Math.roundRange(0, 0xFFFFFF);
 				spanElem.style.color = '#' + color.toString(16);
 				document.body.style.backgroundColor = '#' + (color ^ 0xFFFFFF).toString(16);
@@ -47,28 +47,27 @@
 			
 			var resetClock = () => {
 				clearInterval(intervalID);
-				currTime = 0;
 				appendTime();
 			}
 			
-			var runClock = () => {
-				currTime += 1000;
-				appendTime();
-			}
+			var runClock = () => { appendTime(); }
 			
 			var updateInfo = () => {
 				if(!clockActive) {
 					btnElem.innerHTML = 'I must go';
+					origTime = 0;
 					resetClock();
 				}
 				else {
 					btnElem.innerHTML = 'I have returned';
+					origTime = new Date();
 					intervalID = setInterval(runClock, 1000);
 				}
 			}
 			
 			btnElem.addEventListener('click', () => {
 				clockActive = !clockActive;
+				currTime = Date.now();
 				updateInfo();
 			});
 			
