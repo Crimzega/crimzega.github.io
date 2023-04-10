@@ -2,12 +2,18 @@
 <html lang="en_US">
 	<head>
 		<link href="defs/icon.png" rel="icon" alt="Website Icon" />
-		<link href="defs/base.css" rel="stylesheet" />
+		<link href="defs/core.css" rel="stylesheet" />
 		<title>Crimzega's Website</title>
 	</head>
 	<body>
 		<header>
 			<object data="defs/base-link.svg" height="111" type="image/svg+xml" width="144"></object>
+			<svg id="drawer-handler" height="108" width="162" viewBox="0 0 18 12" version="1.1">
+				<g>
+					<rect fill="none" height="12" stroke="black" stroke-width="0.1" width="18" x="0" y="0" />
+				</g>
+			</svg>
+			<sulvic-drawer></sulvic-drawer>
 			<div class="search-links">
 				<nav>
 					<a href="core.html?data=images">Images</a>
@@ -38,6 +44,6 @@
 				<a href="about.html">About</a>
 			</nav>
 		</footer>
-		<script src="defs/base.js"></script>
+		<script src="defs/core.js" type="module"></script>
 	</body>
 </html>

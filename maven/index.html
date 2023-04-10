@@ -2,57 +2,200 @@
 <html>
 	<head>
 		<title>Crimzega's Maven Repos</title>
+		<style>
+		:root{
+			--bg-color: white;
+			--border-color: black;
+			--gradle-bg-color: #E0E0E0;
+			--link-color: #8050C0;
+			--text-color: black;
+		}
+		body{
+			background-color: var(--bg-color);
+			color: var(--text-color);
+			margin: 0;
+		}
+		a[href]{
+			color: var(--link-color);
+			text-decoration: none;
+		}
+		gradle-viewer{
+			display: block;
+			grid-column: 2;
+		}
+		gradle-viewer sulvic-gradle{
+			background-color: var(--gradle-bg-color);
+			border: thin solid var(--border-color);
+			display: flex;
+			flex-direction: column;
+			padding: 0.4em;
+			margin: 0.6em;
+		}
+		gradle-viewer sulvic-gradle .base-info{
+			margin-left: 1.25em;
+		}
+		gradle-viewer sulvic-gradle .links{
+			border-top: thin solid var(--border-color);
+			display: grid;
+			margin-top: 0.3em;
+			padding-top: 0.3em;
+		}
+		gradle-viewer sulvic-gradle .links a{
+			font-weight: bold;
+		}
+		gradle-viewer sulvic-gradle .links .sum{
+			margin-left: 0.75em;
+			font-size: 12px;
+		}
+		gradle-viewer sulvic-gradle .name, gradle-viewer sulvic-gradle .version{
+			font-size: 22px;
+		}
+		gradle-viewer sulvic-gradle .name{
+			font-weight: bold;
+		}
+		gradle-viewer sulvic-gradle .path{
+			font-size: 16px;
+		}
+		sulvic-content{
+			display: grid;
+			grid-template-columns: 1fr 4fr 1fr
+		}
+		@media (prefers-color-scheme: dark){
+			:root{
+				--border-color: #A0A0A0;
+				--bg-color: #202020;
+				--gradle-bg-color: #404040;
+				--link-color: #B06000;
+				--text-color: #E0E0E0;
+			}
+		}
+		</style>
 	</head>
 	<body>
 		<sulvic-content>
-			
+			<gradle-viewer>
+			</gradle-viewer>
 		</sulvic-content>
 		<script type="module">
-'use strict';
+		'use strict';
 
-import '../defs/core.js'
+		import '../defs/core.js'
 
-class Gradle{
+		class Gradle{
 
-	#gradleDir;
-	#gradleLib;
-	#libVersion;
-	#libSpecific;
+			#gradleDir;
+			#gradleLib;
+			#libVersion;
+			#libSpecific;
 
-	constructor(str = 'com.test:example:1.0'){
-		var split = str.split(':');
-		this.#gradleDir = split[0];
-		this.#gradleLib = split[1];
-		this.#libVersion = split.length >= 3? split[2]: 'LATEST';
-		if(split.length == 4) this.#libSpecific = split[3];
-	}
+			constructor(str = 'com.test:example:1.0'){
+				var split = str.split(':');
+				this.#gradleDir = split[0];
+				this.#gradleLib = split[1];
+				this.#libVersion = split.length >= 3? split[2]: 'LATEST';
+				if(split.length == 4) this.#libSpecific = split[3];
+			}
 
-	getPath(){ `${this.#gradleDir}/${this.#gradleLib}/${this.#libVersion}`; }
+			static async loadData(str = 'com.test:example:1.0'){
+				const gradle = new Gradle(str);
+				var result = {
+					name: gradle.#getLibName(),
+					path: gradle.#getLibPath(),
+					version: gradle.#libVersion,
+					bin: {
+						path: gradle.#getFullPath(),
+						sums: await gradle.#getChecksums()
+					},
+					src: {
+						path: gradle.#getFullPath('source'),
+						sums: await gradle.#getChecksums('source')
+					},
+					docs: {
+						path: gradle.#getFullPath('javadoc'),
+						sums: await gradle.#getChecksums('javadoc')
+					},
+					pom: {
+						path: gradle.#getFullPath('pom'),
+						sums: await gradle.#getChecksums('pom')
+					}
+				};
+				return result;
+			}
 
-	#getFileBase(){
-		var result = `${this.getPath()}/${this.#gradleLib}-${this.#libVersion}`;
-		if(this.#libSpecific != null) result += `-${this.#libSpecific}`;
-		return result;
-	}
+			#getLibPath(){ return this.#gradleDir; }
 
-	getJarChecksums(){
-		var jarBase = `${this.#getFileBase()}.jar`;
-		var result = {
-			md5: '',
-			sha1: '',
-			sha1256: '',
-			sha512: ''
-		};
-		SulvicIO.getFile(`${jarBase}.md5`).then(blob => { blob.text().then(txt => { result.md5 = txt }); });
-		SulvicIO.getFile(`${jarBase}.sha1`).then(blob => { blob.text().then(txt => { result.sha1 = txt }); });
-		SulvicIO.getFile(`${jarBase}.sha256`).then(blob => { blob.text().then(txt => { result.sha512 = txt }); });
-		SulvicIO.getFile(`${jarBase}.sha512`).then(blob => { blob.text().then(txt => { result.sha256 = txt }); });
-		return result;
-	}
+			#getLibName(){ return this.#gradleLib; }
 
-}
+			#getPath(){ return `${this.#gradleDir.replaceAll('.', '/')}/${this.#gradleLib}/${this.#libVersion}`; }
 
-export.Gradle = Gradle;
+			#getFileBase(){
+				var result = `${this.#getPath()}/${this.#gradleLib}-${this.#libVersion}`;
+				if(this.#libSpecific != null) result += `-${this.#libSpecific}`;
+				return result;
+			}
+
+			#getFullPath(type = 'binary'){
+				switch(type){
+					case 'source':
+						return `${this.#getFileBase()}-sources.jar`;
+					break;
+					case 'javadoc':
+						return `${this.#getFileBase()}-javadoc.jar`;
+					break;
+					case 'pom':
+						return `${this.#getFileBase()}.pom`;
+					break;
+					default:
+						return `${this.#getFileBase()}.jar`;
+					break;
+				}
+			}
+
+			async #getChecksums(type = 'binary'){
+				var jarBase = this.#getFullPath(type);
+				var result = {
+					md5: await (await SulvicIO.getFile(`${jarBase}.md5`)).text(),
+					sha1: await (await SulvicIO.getFile(`${jarBase}.sha1`)).text(),
+					sha256: await (await SulvicIO.getFile(`${jarBase}.sha256`)).text(),
+					sha512: await (await SulvicIO.getFile(`${jarBase}.sha512`)).text()
+				};
+				return result;
+			}
+
+		}
+
+		const gradleViewer = document.querySelector('gradle-viewer');
+		for(var base of ['com.sulvic:sulvic-utils:1.0', 'com.sulvic:sulvic-engine:1.0', 'com.sulvic:sulvic-glfw:1.0', 'com.sulvic:sulvic-jopt:1.0']){
+			var gradle = await Gradle.loadData(base);
+		gradleViewer.innerHTML += `
+				<sulvic-gradle>
+					<span class="path">${gradle.path}</span>
+					<div class="base-info">
+						<span class="name">${gradle.name}</span>
+						<span class="version">${gradle.version}</span>
+					</div>
+					<div class="links">
+						<div>
+							<a href="${gradle.bin.path}">Binary</a><br/>
+							<div class="sum">MD5: ${gradle.bin.sums.md5}</div>
+							<div class="sum">SHA1: ${gradle.bin.sums.sha1}</div>
+							<div class="sum">SHA256: ${gradle.bin.sums.sha256}</div>
+							<div class="sum">SHA512: ${gradle.bin.sums.sha512}</div>
+						</div>
+						<div>
+							<a href="${gradle.src.path}">Source</a>
+						</div>
+						<div>
+							<a href="${gradle.docs.path}">Javadocs</a>
+						</div>
+						<div>
+							<a href="${gradle.pom.path}">Pom</a>
+						</div>
+					</div>
+				</sulvic-gradle>
+`;
+		}
+		self.Gradle = Gradle;
 		</script>
 	</body>
 </html>
