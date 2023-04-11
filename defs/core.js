@@ -46,8 +46,6 @@ String.prototype.reverse = function(){
 	return result;
 }
 
-self.SulvicDate = SulvicDate;
-
 class SulvicIO{
 
 	static async getFile(url, type = 'blob'){
