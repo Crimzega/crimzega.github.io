@@ -165,7 +165,7 @@
 		}
 
 		const gradleViewer = document.querySelector('gradle-viewer');
-		for(var base of ['com.sulvic:sulvic-utils:1.0', 'com.sulvic:sulvic-utils:1.1', 'com.sulvic:sulvic-engine:1.0', 'com.sulvic:sulvic-engine:1.1', 'com.sulvic:sulvic-glfw:1.0', 'com.sulvic:sulvic-jopt:1.0']){
+		for(var base of ['com.sulvic:sulvic-utils:1.0', 'com.sulvic:sulvic-utils:1.1', 'com.sulvic:sulvic-utils:1.2', 'com.sulvic:sulvic-engine:1.0', 'com.sulvic:sulvic-engine:1.1', 'com.sulvic:sulvic-glfw:1.0', 'com.sulvic:sulvic-jopt:1.0']){
 			var gradle = await Gradle.loadData(base);
 		gradleViewer.innerHTML += `
 				<sulvic-gradle>
