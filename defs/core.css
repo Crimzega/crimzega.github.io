@@ -1,11 +1,37 @@
+@charset 'utf-8';
 :root{
 	--bg-color: hsl(0, 0%, 90%);
+	--border-color: hsl(0, 0%, 45%);
+	--border-search-bg: hsl(0, 0%, 95%);
+	--border-search-color: hsl(0, 0%, 55%);
+	--drawer-bg-color: hsl(0, 0%, 75%);
+	--drawer-link-img: linear-gradient(
+		to bottom,
+		hsla(0, 0%, 15%, 0.25),
+		transparent,
+		transparent,
+		hsla(0, 0%, 15%, 0.25)
+	);
+	--error-bg-color: hsl(0, 0%, 80%);
+	--error-hr-border-color: hsl(0, 0%, 75%);
+	--error-bg-img: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25)), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25));
+		--error-hr-border-color: hsl(0, 0%, 40%);
+	--header-bg-color: hsl(0, 0%, 80%);
+	--footer-bg-color: hsl(0, 0%, 65%);
+	--footer-link-color: hsl(0, 0%, 0%);
 	--link-color: hsl(187, 100%, 37%);
-}
-body, html{
-	height: 100%;
-	margin: 0;
-	background-color: var(--bg-color);
+	--paginator-button-bg-active: hsl(0, 0%, 65%);
+	--paginator-button-bg-color: hsl(0, 0%, 95%);
+	--paginator-button-border-active: hsl(0, 0%, 50%);
+	--paginator-button-border-color: hsl(0, 0%, 75%);
+	--paginator-button-text-active: hsl(80, 100%, 70%);
+	--paginator-button-text-color: hsl(164, 80%, 48%);
+	--text-color: hsl(225, 82%, 59%);
+	--search-icon-color: hsl(0, 0%, 60%);
+	--scrollbar-main-color: hsl(0, 0%, 65%);
+	--scrollbar-second-color: hsl(0, 0%, 30%);
+	--video-controls-bg-color: hsl(0, 0%, 30%);
+	--video-controls-bg-color: hsl(0, 0%, 65%);
 }
 
 a[href]{
@@ -13,9 +39,286 @@ a[href]{
 	text-decoration: none;
 }
 
+body, html{
+	height: 100%;
+}
+
+body{
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	margin: 0;
+	overflow-y: hidden;
+}
+
+footer{
+	background-image: linear-gradient(to top, var(--footer-bg-color) 80%, transparent);
+	color: var(--text-color);
+	flex-shrink: 0;
+	padding-bottom: 1.5em;
+	padding-top: 1.5em;
+}
+
+footer a[href]{
+	color: var(--footer-link-color);
+}
+
+footer nav{
+	display: flex;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	justify-content: space-between;
+	max-width: 36em;
+	text-align: center;
+}
+
+footer p{
+	margin-bottom: 0;
+	margin-left: 0.8em;
+	margin-top: 0;
+}
+
+header{
+	background-color: var(--header-bg-color);
+	display: flex;
+}
+
+header #icon{
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	display: flex;
+	max-width: 10em;
+	justify-content: center;
+}
+
+header #registry{
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	max-width: 10em;
+}
+
+header #search{
+	align-items: center;
+	display: grid;
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+}
+
+header #search button, header #search input{
+	background-color: var(--border-search-bg);
+	border-color: var(--border-search-color);
+	border-style: solid;
+	border-width: 2px;
+	outline: none;
+}
+
+header #search button{
+	align-content: center;
+	border-left-style: none;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+	display: grid;
+	grid-column: -3 / -1;
+	justify-content: center;
+}
+
+header #search form{
+	display: grid;
+	grid-template-columns: repeat(26, 1fr);
+	height: 2em;
+	max-width: 40em;
+	width: 40em;
+}
+
+header #search input{
+	border-right-style: none;
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+	color: var(--text-color);
+	grid-column: 1 / span 24;
+	padding-left: 0.6em;
+}
+
+sulvic-container{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	height: 100%;
+	
+}
+
+sulvic-container h1, sulvic-container h2, sulvic-container h3, sulvic-container h4, sulvic-container h5, sulvic-container h6{
+	margin-bottom: 0.75em;
+	margin-top: 0.75em;
+	text-align: center;
+}
+
+sulvic-container main-content{
+	flex-direction: column;
+	position: relative;
+	left: 0em;
+	overflow-y: auto;
+	scrollbar-color: var(--scrollbar-main-color) var(--scrollbar-second-color);
+	scrollbar-width: thin;
+	transition-property: left, width;
+	transition-duration: 0.25s;
+	width: 100%;
+}
+
+sulvic-container main-content hr{
+	border-color: var(--border-color);
+	border-style: ridge;
+	border-width: 2px;
+	border-left-style: none;
+	border-right-style: none;
+	margin-left: 4em;
+	margin-right: 4em;
+}
+
+sulvic-container sulvic-content{
+	display: flex;
+	flex-basis: auto;
+	flex-grow: 1;
+	overflow: auto;
+}
+
+sulvic-container sulvic-drawer{
+	background-color: var(--drawer-bg-color);
+	display: flex;
+	flex-direction: column;
+	left: -15em;
+	position: absolute;
+	transition-property: left;
+	transition-duration: 0.25s;
+	text-align: center;
+	width: 15em;
+	z-index: 1;
+}
+
+sulvic-container sulvic-drawer a{
+	background-image: var(--drawer-link-img);
+	padding-bottom: 0.4em;
+	padding-top: 0.4em;
+	width: 100%;
+}
+
+sulvic-container sulvic-drawer hr{
+	border-bottom: thin solid var(--border-color);
+	margin: 0;
+}
+
+sulvic-container sulvic-drawer.opened{
+	left: 0em;
+}
+
+sulvic-container sulvic-drawer.opened + main-content{
+	left: 15em;
+	width: calc(100% - 15em);
+}
+
+sulvic-container sulvic-video{
+	margin-bottom: 0.9em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.9em;
+}
+
+/*sulvic-container sulvic-video::part(vid-controls){
+	background-image: linear-gradient(to top, hsla(0, 0%, 0%, 0.2) 70%, transparent);
+	height: 2.8em;
+	width: 100%;
+}
+
+sulvic-container sulvic-video::part(vid-player){
+	background-color: orange;
+}*/
+
+.drawer-handler{
+	--svg-text-color: hsl(46, 58%, 86%);
+	--svg-text-hover-color: hsl(158, 58%, 72%);
+}
+
+.drawer-handler #graphic-data{
+	position: relative;
+	transform: perspective(5000px) rotateX(-15deg) rotateY(30deg);
+	transform-origin: center;
+	transform-style: preserve-3d;
+}
+
+.drawer-handler #graphic-data .back{
+	fill: url(#bg-base);
+	position: absolute;
+	transform: translateZ(-5px);
+	z-index: 0;
+}
+
+.drawer-handler #graphic-data .site-text{
+	fill: var(--svg-text-color);
+	position: absolute;
+	font-size: 120px;
+	line-height: 120px;
+	text-shadow: 0 0 0.1em black;
+	transform: scale(0.7) translate(135px, 95px) translateZ(5px);
+	user-select: none;
+	z-index: 1;
+}
+
+.drawer-handler #graphic-data:hover .back{
+	fill: url(#bg-base-hover);
+}
+
+.drawer-handler #graphic-data:hover .site-text{
+	fill: var(--svg-text-hover-color);
+}
+
 @media (prefers-color-scheme: dark){
+
 	:root{
-//		--bg-color: hsl(0, 0%, 15%);
-//		--link-color: hsl(50, 74%, 46%);
+		--bg-color: hsl(0, 0%, 10%);
+		--border-color: hsl(0, 0%, 75%);
+		--border-search-bg: hsl(0, 0%, 35%);
+		--border-search-color: hsl(0, 0%, 5%);
+		--drawer-bg-color: hsl(0, 0%, 35%);
+		--drawer-link-img: linear-gradient(
+			to bottom,
+			hsla(0, 100%, 100%, 0.25),
+			transparent,
+			transparent,
+			hsla(0, 100%, 100%, 0.25)
+		);
+		--error-bg-color: hsl(0, 0%, 20%);
+		--header-bg-color: hsl(0, 0%, 20%);
+		--error-bg-img: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25)), linear-gradient(to left, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25));
+		--footer-bg-color: hsl(0, 0%, 2.5%);
+		--footer-link-color: hsl(200, 60%, 48%);
+		--link-color: hsl(50, 74%, 46%);
+		--paginator-button-bg-color: hsl(0, 0%, 25%);
+		--paginator-button-border-color: hsl(0, 0%, 40%);
+		--paginator-button-text-color: hsl(130, 26%, 56%);
+		--search-icon-color: hsl(0, 0%, 70%);
+		--text-color: hsl(29, 42%, 82%);
+		--scrollbar-main-color: hsl(0, 0%, 20%);
+		--scrollbar-second-color: hsl(0, 0%, 55%);
+		--video-controls-bg-color: hsl(0, 0%, 4.75%);
 	}
+
+	.drawer-handler{
+		--svg-text-color: hsl(158, 58%, 36%);
+		--svg-text-hover-color: hsl(46, 58%, 43%);
+	}
+
+	.drawer-handler #graphic-data .back{
+		fill: url(#bg-dark);
+	}
+
+	.drawer-handler #graphic-data:hover .back{
+		fill: url(#bg-dark-hover);
+	}
+
 }

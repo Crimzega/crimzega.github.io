@@ -1,1 +1,0 @@
-javascript:(function(){var l=location.href;l=l.substr(l.indexOf('v=')+2);if(l.includes('&')) l.substr(0,l.indexOf('&'));window.open('https://www.ytmp3.cc/en13/?link='+l+'&full=true');})();

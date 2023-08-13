@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Crimzega's Maven Repos</title>
 		<style>
 		:root{
 			--bg-color: white;
@@ -22,6 +21,11 @@
 		gradle-viewer{
 			display: block;
 			grid-column: 2;
+			width: 60%;
+			margin-bottom: 4em;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 4em;
 		}
 		gradle-viewer sulvic-gradle{
 			background-color: var(--gradle-bg-color);
@@ -70,16 +74,156 @@
 			}
 		}
 		</style>
+		<link href="../defs/core.css" rel="stylesheet" />
+		<meta charset="utf-8" content="Crimzega Sulvic" name="author" />
+		<link href="https://crimzega.com/maven/" rel="canonical" />
+		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="description" />
+		<meta content="Crimzega Sulvic, MrSulvic, CDS, Crimzega's Website, Sulvic Website, MrSulvic's Website, CDS-Site, Sulvic Contents" name="keywords" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="og:description" />
+		<meta content="favicon.ico" name="og:image" />
+		<meta content="Crimzega's Website" name="og:title" />
+		<meta content="website" name="og:type" />
+		<meta content="https://crimzega.com/maven/" name="og:url" />
+		<meta content="Crimzega's Website" name="twitter:title" />
+		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="twitter:description" />
+		<meta content="hsl(194, 40%, 62%)" name="theme-color" />
+		<link href="../defs/apple-icon-192.png" rel="apple-touch-icon" sizes="192x192" />
+		<title>Crimzega's Maven Repos</title>
 	</head>
 	<body>
-		<sulvic-content>
-			<gradle-viewer>
-			</gradle-viewer>
-		</sulvic-content>
+		<sulvic-container>
+			<header>
+			<div id="icon">
+				<svg class="drawer-handler" height="90" viewBox="0 0 640 480" version="1.2" width="120">
+					<radialGradient id="bg-base">
+						<stop offset="0%" stop-color="hsl(224, 76%, 58%)" />
+						<stop offset="64%" stop-color="hsl(146, 90%, 62%)" />
+						<stop offset="78%" stop-color="hsl(46, 86%, 72%)" />
+						<stop offset="100%" stop-color="hsla(0, 0%, 50%, 0)" />
+					</radialGradient>
+					<radialGradient id="bg-base-hover">
+						<stop offset="0%" stop-color="hsl(216, 48%, 12%)" />
+						<stop offset="64%" stop-color="hsl(262, 74%, 52%)" />
+						<stop offset="78%" stop-color="hsl(316, 80%, 76%)" />
+						<stop offset="100%" stop-color="hsla(0, 0%, 50%, 0)" />
+					</radialGradient>
+					<radialGradient id="bg-dark">
+						<stop offset="0%" stop-color="hsl(216, 48%, 6%)" />
+						<stop offset="64%" stop-color="hsl(262, 74%, 26%)" />
+						<stop offset="78%" stop-color="hsl(316, 52%, 32%)" />
+						<stop offset="100%" stop-color="hsla(0, 0%, 50%, 0)" />
+					</radialGradient>
+					<radialGradient id="bg-dark-hover">
+						<stop offset="0%" stop-color="hsl(224, 36%, 18%)" />
+						<stop offset="64%" stop-color="hsl(146, 40%, 22%)" />
+						<stop offset="78%" stop-color="hsl(84, 54%, 22%)" />
+						<stop offset="100%" stop-color="hsla(0, 0%, 50%, 0)" />
+					</radialGradient>
+					<g id="graphic-data">
+						<g class="back">
+							<ellipse cx="320" cy="240" rx="320" ry="240" />
+						</g>
+						<g class="site-text">
+							<text x="52.6" y="229">Crimzega's</text>
+							<text x="128.22" y="362">Website</text>
+						</g>
+					</g>
+				</svg>
+			</div>
+			<div id="search">
+				<form action="search.php">
+					<input name="query" />
+					<button type="submit">
+						<svg height="24" viewBox="0 0 32 32" width="24" xmlns="http://www.w3.org/2000/svg">
+							<style><![CDATA[
+							g{
+								stroke-linecap: round;
+								stroke-linejoin: round;
+							}
+							.glass{
+								stroke: var(--search-icon-color);
+								fill: none;
+							}
+							.glass ellipse{
+								stroke: var(--search-icon-color);
+								fill: none;
+							}
+							.handle{
+								stroke: none;
+								fill: var(--search-icon-color);
+							}
+							.handle rect{
+								transform: rotateZ(45deg);
+								transform-origin: center;
+							}
+							]]></style>
+							<g class="glass">
+								<ellipse cx="22.8" cy="9.2" stroke-width="2.2" rx="8.5" ry="8.5" />
+								<path d="M17.78,10.55 A5.2,5.2,0,0,1,24.15,4.18" stroke-width='1.2' />
+							</g>
+							<g class="handle">
+								<rect height="4" stroke-width="0.8" width="2" x="15" y="16" />
+								<rect height="18" stroke-width="1.4" width="4" x="14" y="19" />
+							</g>
+						</svg>
+					</button>
+				</form>
+			</div>
+			<div id="registry">
+							</div>
+			</header>
+			<sulvic-content>
+				<sulvic-drawer>
+					<a href="/">Home Page</a>
+					<hr />
+					<a href="/core.php?data=videos">Videos</a>
+					<hr />
+					<a href="/core.php?data=songs">Songs</a>
+					<hr />
+					<a href="/core.php?data=images">Images</a>
+					<hr />
+					<a href="/core.php?data=programs">Programs</a>
+					<hr />
+					<a href="/core.php?data=mods">Mods</a>
+					<hr />
+					<a href="/core.php?data=theatre">Theatre</a>
+					<hr />
+					<a href="/forums/">Forums</a>
+					<hr />
+					<a href="/wiki/">Wiki</a>
+					<hr />
+					<a href="/maven/">Maven</a>
+					<hr />
+					<a href="/about.html">About</a>
+				</sulvic-drawer>
+				<main-content>
+					<h1>Maven Repos</h1>
+					<gradle-viewer>
+					</gradle-viewer>
+				</main-content>
+			</sulvic-content>
+			<footer>
+				<nav>
+					<a href="/">Home Page</a>
+					<a href="core.php?data=videos">Videos</a>
+					<a href="core.php?data=songs">Songs</a>
+					<a href="core.php?data=images">Images</a>
+					<a href="core.php?data=programs">Programs</a>
+					<a href="core.php?data=mods">Mods</a>
+					<a href="core.php?data=theatre">Theatre</a>
+					<a href="/forums/">Forums</a>
+					<a href="/wiki/">Wiki</a>
+					<a href="/maven/">Maven</a>
+					<a href="about.html">About</a>
+				</nav>
+				<p>&copy; 2023 Crimzega Sulvic</p>
+			</footer>
+		</sulvic-container>
 		<script type="module">
-		'use strict';
+		"use strict";
 
-		import '../defs/core.js'
+		import "../defs/core.js";
 
 		class Gradle{
 
@@ -88,35 +232,31 @@
 			#libVersion;
 			#libSpecific;
 
-			constructor(str = 'com.test:example:1.0'){
+			constructor(str = "com.test:example:1.0"){
 				var split = str.split(':');
 				this.#gradleDir = split[0];
 				this.#gradleLib = split[1];
-				this.#libVersion = split.length >= 3? split[2]: 'LATEST';
+				this.#libVersion = split.length >= 3? split[2]: "LATEST";
 				if(split.length == 4) this.#libSpecific = split[3];
 			}
 
-			static async loadData(str = 'com.test:example:1.0'){
+			static async loadData(str = "com.test:example:1.0"){
 				const gradle = new Gradle(str);
 				var result = {
 					name: gradle.#getLibName(),
 					path: gradle.#getLibPath(),
 					version: gradle.#libVersion,
 					bin: {
-						path: gradle.#getFullPath(),
-						sums: await gradle.#getChecksums()
+						path: gradle.#getFullPath()
 					},
 					src: {
-						path: gradle.#getFullPath('source'),
-						sums: await gradle.#getChecksums('source')
+						path: gradle.#getFullPath("source")
 					},
 					docs: {
-						path: gradle.#getFullPath('javadoc'),
-						sums: await gradle.#getChecksums('javadoc')
+						path: gradle.#getFullPath("javadoc")
 					},
 					pom: {
-						path: gradle.#getFullPath('pom'),
-						sums: await gradle.#getChecksums('pom')
+						path: gradle.#getFullPath("pom")
 					}
 				};
 				return result;
@@ -134,15 +274,15 @@
 				return result;
 			}
 
-			#getFullPath(type = 'binary'){
+			#getFullPath(type = "binary"){
 				switch(type){
-					case 'source':
+					case "source":
 						return `${this.#getFileBase()}-sources.jar`;
 					break;
-					case 'javadoc':
+					case "javadoc":
 						return `${this.#getFileBase()}-javadoc.jar`;
 					break;
-					case 'pom':
+					case "pom":
 						return `${this.#getFileBase()}.pom`;
 					break;
 					default:
@@ -151,23 +291,13 @@
 				}
 			}
 
-			async #getChecksums(type = 'binary'){
-				var jarBase = this.#getFullPath(type);
-				var result = {
-					md5: await (await SulvicIO.getFile(`${jarBase}.md5`)).text(),
-					sha1: await (await SulvicIO.getFile(`${jarBase}.sha1`)).text(),
-					sha256: await (await SulvicIO.getFile(`${jarBase}.sha256`)).text(),
-					sha512: await (await SulvicIO.getFile(`${jarBase}.sha512`)).text()
-				};
-				return result;
-			}
-
 		}
 
 		const gradleViewer = document.querySelector('gradle-viewer');
-		for(var base of ['com.sulvic:sulvic-utils:1.0', 'com.sulvic:sulvic-utils:1.1', 'com.sulvic:sulvic-utils:1.2', 'com.sulvic:sulvic-engine:1.0', 'com.sulvic:sulvic-engine:1.1', 'com.sulvic:sulvic-glfw:1.0', 'com.sulvic:sulvic-glfw:1.1', 'com.sulvic:sulvic-jopt:1.0', 'com.sulvic:sulvic-jopt:1.1']){
+		
+		for(var base of ["com.sulvic:sulvic-engine:1.0","com.sulvic:sulvic-engine:1.1","com.sulvic:sulvic-glfw:1.0","com.sulvic:sulvic-glfw:1.1","com.sulvic:sulvic-jopt:1.0","com.sulvic:sulvic-jopt:1.1","com.sulvic:sulvic-utils:1.0","com.sulvic:sulvic-utils:1.1","com.sulvic:sulvic-utils:1.2","com.sulvic:sulvic-utils:1.3"]){
 			var gradle = await Gradle.loadData(base);
-		gradleViewer.innerHTML += `
+			gradleViewer.innerHTML += `
 				<sulvic-gradle>
 					<span class="path">${gradle.path}</span>
 					<div class="base-info">
@@ -176,11 +306,7 @@
 					</div>
 					<div class="links">
 						<div>
-							<a href="${gradle.bin.path}">Binary</a><br/>
-							<div class="sum">MD5: ${gradle.bin.sums.md5}</div>
-							<div class="sum">SHA1: ${gradle.bin.sums.sha1}</div>
-							<div class="sum">SHA256: ${gradle.bin.sums.sha256}</div>
-							<div class="sum">SHA512: ${gradle.bin.sums.sha512}</div>
+							<a href="${gradle.bin.path}">Binary</a>
 						</div>
 						<div>
 							<a href="${gradle.src.path}">Source</a>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="/defs/core.css" rel="stylesheet" />
+		<title> Crimzega's Website | Error 404</title>
+		<style>
+		body{
+			display: grid;
+			grid-template-columns: 1fr 2fr 1fr;
+			grid-template-rows: 1fr 2fr 1fr;
+		}
+
+		sulvic-error{
+			background-color: var(--error-bg-color);
+			background-image: var(--error-bg-img);
+			border-bottom-left-radius: 1em;
+			border-bottom-right-radius: 1em;
+			border-top-left-radius: 1em;
+			border-top-right-radius: 1em;
+			display: block;
+			grid-column: 2;
+			grid-row: 2;
+			height: 20em;
+			margin-left: auto;
+			margin-right: auto;
+			padding-bottom: 2em;
+			padding-left: 2em;
+			padding-right: 2em;
+			padding-top: 2em;
+			text-align: center;
+			width: 40em;
+		}
+		sulvic-error h1{
+			margin-bottom: 0;
+			margin-top: 0;
+			font-size: 112px;
+		}
+		sulvic-error hr{
+			border-color: var(--error-hr-border-color);
+			border-width: 3px;
+			margin-bottom: 3em;
+			margin-top: 0.25em;
+		}
+		sulvic-error p{
+			margin-bottom: 4em;
+			margin-top: 4em;
+			font-size: 18px;
+		}
+		</style>
+	</head>
+	<body>
+		<sulvic-error>
+			<h1>404</h1>
+			<hr/>
+			<p>The requested URL does not exist at the following time.<br/>Returning to previous page.</p>
+			<script>setTimeout(function(){ history.back(); }, 1500);</script>
+		</sulvic-error>
+	</body>
+</html>

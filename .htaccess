@@ -1,0 +1,2 @@
+ErrorDocument 403 /defs/errors/err_403.html
+ErrorDocument 404 /defs/errors/err_404.html
