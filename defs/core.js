@@ -2,6 +2,7 @@
 
 /* Import section */
 import './elems/paginator.js';
+import './elems/album.js';
 import './elems/video.js';
 
 /* Classes section */
