@@ -1,5 +1,5 @@
 function useOldTwitter(){
-	console.log("SulvicSystems [X to Twitter] {Custom Site JavaScript}");
+	console.log("SulvicSystems [X to Twitter] {GitHub Website}");
 	var currTitle = document.title;
 	if(currTitle.includes("on X")) currTitle = currTitle.replaceAll("on X", "on Twitter");
 	if(currTitle.includes(" / X")) currTitle = currTitle.replaceAll(" / X", "");
@@ -10,6 +10,8 @@ function useOldTwitter(){
 	if(currIcon.href.includes("ico")) currIcon.href = "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZmlsbD0iaHNsKDIwMywgODkuMSUsIDUzLjElKSIgZD0iTTIzLjY0MyA0LjkzN2MtLjgzNS4zNy0xLjczMi42Mi0yLjY3NS43MzMuOTYyLS41NzYgMS43LTEuNDkgMi4wNDgtMi41NzgtLjkuNTM0LTEuODk3LjkyMi0yLjk1OCAxLjEzLS44NS0uOTA0LTIuMDYtMS40Ny0zLjQtMS40Ny0yLjU3MiAwLTQuNjU4IDIuMDg2LTQuNjU4IDQuNjYgMCAuMzY0LjA0Mi43MTguMTIgMS4wNi0zLjg3My0uMTk1LTcuMzA0LTIuMDUtOS42MDItNC44NjgtLjQuNjktLjYzIDEuNDktLjYzIDIuMzQyIDAgMS42MTYuODIzIDMuMDQzIDIuMDcyIDMuODc4LS43NjQtLjAyNS0xLjQ4Mi0uMjM0LTIuMTEtLjU4M3YuMDZjMCAyLjI1NyAxLjYwNSA0LjE0IDMuNzM3IDQuNTY4LS4zOTIuMTA2LS44MDMuMTYyLTEuMjI3LjE2Mi0uMyAwLS41OTMtLjAyOC0uODc3LS4wODIuNTkzIDEuODUgMi4zMTMgMy4xOTggNC4zNTIgMy4yMzQtMS41OTUgMS4yNS0zLjYwNCAxLjk5NS01Ljc4NiAxLjk5NS0uMzc2IDAtLjc0Ny0uMDIyLTEuMTEyLS4wNjUgMi4wNjIgMS4zMjMgNC41MSAyLjA5MyA3LjE0IDIuMDkzIDguNTcgMCAxMy4yNTUtNy4wOTggMTMuMjU1LTEzLjI1NCAwLS4yLS4wMDUtLjQwMi0uMDE0LS42MDIuOTEtLjY1OCAxLjctMS40NzcgMi4zMjMtMi40MXoiPjwvcGF0aD48L2c+PC9zdmc+";
 }
 
-window.onchange = function(){ setTimeout(useOldTwitter(), 4000); }
+document.querySelector("a[link]").forEach(elem => { elem.onclick = function(){ setTimeout(useOldTwitter, 4000); } });
+
+window.onchange = function(){ setTimeout(useOldTwitter, 4000); }
 
 setTimeout(useOldTwitter, 4000);
