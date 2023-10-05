@@ -1,6 +1,8 @@
 body{
+	color: inherit;
 	background-color: lightgray;
 	text-align: center;
+	overflow-y: inherit;
 }
 
 code-view{
@@ -11,7 +13,7 @@ code-view{
 	font-size: 13px;
 	grid-column-gap: 1em;
 	height: 50em;
-	margin-bottom: 0;
+	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0;
@@ -45,5 +47,5 @@ h1{
 #file-select{
 	height: 3em;
 	width: 12em;
-	margin-bottom: 3em;
+	margin-bottom: 2em;
 }

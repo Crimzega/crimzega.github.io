@@ -1,42 +1,37 @@
 'use strict';
 
-/* Import section */
-import './elems/paginator.js';
-import './elems/album.js';
-import './elems/video.js';
-
 /* Classes section */
 class SulvicIO{
 
-	static async getFile(url, type = 'blob'){
+	static async getFile(url, type = "blob"){
 		var get = () => {
 			return new Promise((resolve, reject) => {
 				var xhr = new XMLHttpRequest();
-				xhr.open('GET', url);
+				xhr.open("GET", url);
 				xhr.responseType = type;
 				xhr.onload = function(){ console.log(`Attempting to grab the requested file content.`); };
 				xhr.onreadystatechange = function(){
 					if(this.readyState == XMLHttpRequest.DONE){
-						if(this.status >= 200 && this.status < 300) resolve(type === 'text'? this.responseText: this.response);
-						else reject({ info: 'An error has occured', message: this.statusText, response: this.status });
+						if(this.status >= 200 && this.status < 300) resolve(type === "text"? this.responseText: this.response);
+						else reject({ info: "An error has occured", message: this.statusText, response: this.status });
 					}
 				};
-				xhr.onerror = function(){ reject({ info: 'An error has occured', message: this.statusText, response: this.status }); };
+				xhr.onerror = function(){ reject({ info: "An error has occured", message: th.statusText, response: this.status }); };
 				xhr.send();
 			});
 		};
 		return await get();
 	}
 
-	static getFileText(url, type = 'blob'){ return SulvicIO.getFile(url, type).then(blob => { blob.text().then(txt => { console.log(txt); }); }); }
+	static getFileText(url){ return SulvicIO.getFile(url, "text"); }
 
-	static downloadFile(url, fileName = null, type = 'blob'){
+	static downloadFile(url, fileName = null, type = "blob"){
 		SulvicIO.getFile(url, type).then(data => {
 			console.log(`Attempting to download the requested contents.`);
-			var dl = $('<a>', {
+			var dl = $("<a>", {
 				download: fileName,
-				href: URL.createObjectURL(new Blob([data], { type: 'application/octet-stream' }))
-			}).click(function(){ this.click(); }).trigger('click');
+				href: URL.createObjectURL(new Blob([data], { type: "application/octet-stream" }))
+			}).click(function(){ this.click(); }).trigger("click");
 			setTimeout(() => { dl.remove(); }, 100);
 		});
 	}
@@ -56,7 +51,7 @@ JSON.valuesByKey = function(obj, key){
 	let values = [];
 	for(let prop in obj) if(obj.hasOwnProperty(prop)){
 		if(prop === key) values.push(obj[prop]);
-		if(typeof obj[prop] === 'object') values = values.concat(JSON.valuesByKey(obj[prop], key));
+		if(typeof obj[prop] === "object") values = values.concat(JSON.valuesByKey(obj[prop], key));
 	}
 	return values;
 }
@@ -135,11 +130,11 @@ function getClosestGBAColor(clr){
 function getImagePalette(imgSrc, count){
 	return new Promise((resolve, reject) => {
 		var img = new Image();
-		img.crossOrigin = 'Anonymous';
+		img.crossOrigin = "Anonymous";
 		img.src = imgSrc;
 		img.onload = function(){
-			var canvas = document.createElement('canvas');
-			var ctx = canvas.getContext('2d');
+			var canvas = document.createElement("canvas");
+			var ctx = canvas.getContext("2d");
 			var width = img.width;
 			var height = img.height;
 			ctx.drawImage(img, 0, 0, width, height);
@@ -182,7 +177,7 @@ Number.prototype.toHex = function(){ return this.toString(16); }
 String.prototype.forEach = Array.prototype.forEach;
 
 String.prototype.reverse = function(){
-	var result = '';
+	var result = "";
 	for(var ch of this) result = ch += result;
 	return result;
 }
@@ -193,9 +188,14 @@ window.sleep = delay => new Promise(resolve => { setTimeout(() => resolve(), del
 window.wait = () => sleep(0);
 
 window.onload = function(){
-	var drawerHandler = document.querySelector('#icon .drawer-handler');
-	var drawer = document.querySelector('sulvic-drawer');
-	drawerHandler.onclick = function(evt){ drawer.classList.toggle('opened'); }
+	var drawerHandler = document.querySelector("#icon .drawer-handler");
+	var drawer = document.querySelector("sulvic-drawer");
+	if(drawerHandler != null && drawer != null) drawerHandler.onclick = function(evt){ drawer.classList.toggle("opened"); }
 }
 
 window.SulvicIO = SulvicIO;
+
+/* Import section */
+import "./elems/album.js";
+import "./elems/paginator.js";
+import "./elems/video.js";
