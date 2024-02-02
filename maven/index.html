@@ -294,9 +294,22 @@
 		}
 
 		const gradleViewer = document.querySelector('gradle-viewer');
-		
-		for(var base of ["com.sulvic:sulvic-engine:1.0","com.sulvic:sulvic-engine:1.1","com.sulvic:sulvic-glfw:1.0","com.sulvic:sulvic-glfw:1.1","com.sulvic:sulvic-jopt:1.0","com.sulvic:sulvic-jopt:1.1","com.sulvic:sulvic-utils:1.0","com.sulvic:sulvic-utils:1.1","com.sulvic:sulvic-utils:1.2","com.sulvic:sulvic-utils:1.3"]){
-			var gradle = await Gradle.loadData(base);
+		const mavens = [
+			"com.sulvic:sulvic-engine:1.0",
+			"com.sulvic:sulvic-engine:1.1",
+			"com.sulvic:sulvic-glfw:1.0",
+			"com.sulvic:sulvic-glfw:1.1",
+			"com.sulvic:sulvic-jopt:1.0",
+			"com.sulvic:sulvic-jopt:1.1",
+			"com.sulvic:sulvic-jopt:1.2",
+			"com.sulvic:sulvic-utils:1.0",
+			"com.sulvic:sulvic-utils:1.1",
+			"com.sulvic:sulvic-utils:1.2",
+			"com.sulvic:sulvic-utils:1.3"
+		];
+
+		for(var maven of mavens){
+			var gradle = await Gradle.loadData(maven);
 			gradleViewer.innerHTML += `
 				<sulvic-gradle>
 					<span class="path">${gradle.path}</span>
