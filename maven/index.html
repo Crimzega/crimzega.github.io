@@ -1,94 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-		:root{
-			--bg-color: white;
-			--border-color: black;
-			--gradle-bg-color: #E0E0E0;
-			--link-color: #8050C0;
-			--text-color: black;
-		}
-		body{
-			background-color: var(--bg-color);
-			color: var(--text-color);
-			margin: 0;
-		}
-		a[href]{
-			color: var(--link-color);
-			text-decoration: none;
-		}
-		gradle-viewer{
-			display: block;
-			grid-column: 2;
-			width: 60%;
-			margin-bottom: 4em;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 4em;
-		}
-		gradle-viewer sulvic-gradle{
-			background-color: var(--gradle-bg-color);
-			border: thin solid var(--border-color);
-			display: flex;
-			flex-direction: column;
-			padding: 0.4em;
-			margin: 0.6em;
-		}
-		gradle-viewer sulvic-gradle .base-info{
-			margin-left: 1.25em;
-		}
-		gradle-viewer sulvic-gradle .links{
-			border-top: thin solid var(--border-color);
-			display: grid;
-			margin-top: 0.3em;
-			padding-top: 0.3em;
-		}
-		gradle-viewer sulvic-gradle .links a{
-			font-weight: bold;
-		}
-		gradle-viewer sulvic-gradle .links .sum{
-			margin-left: 0.75em;
-			font-size: 12px;
-		}
-		gradle-viewer sulvic-gradle .name, gradle-viewer sulvic-gradle .version{
-			font-size: 22px;
-		}
-		gradle-viewer sulvic-gradle .name{
-			font-weight: bold;
-		}
-		gradle-viewer sulvic-gradle .path{
-			font-size: 16px;
-		}
-		sulvic-content{
-			display: grid;
-			grid-template-columns: 1fr 4fr 1fr
-		}
-		@media (prefers-color-scheme: dark){
-			:root{
-				--border-color: #A0A0A0;
-				--bg-color: #202020;
-				--gradle-bg-color: #404040;
-				--link-color: #B06000;
-				--text-color: #E0E0E0;
-			}
-		}
-		</style>
 		<link href="../defs/core.css" rel="stylesheet" />
-		<meta charset="utf-8" content="Crimzega Sulvic" name="author" />
 		<link href="https://crimzega.com/maven/" rel="canonical" />
-		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="description" />
-		<meta content="Crimzega Sulvic, MrSulvic, CDS, Crimzega's Website, Sulvic Website, MrSulvic's Website, CDS-Site, Sulvic Contents" name="keywords" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="og:description" />
-		<meta content="favicon.ico" name="og:image" />
-		<meta content="Crimzega's Website" name="og:title" />
-		<meta content="website" name="og:type" />
-		<meta content="https://crimzega.com/maven/" name="og:url" />
-		<meta content="Crimzega's Website" name="twitter:title" />
-		<meta content="The main site that houses all of Crimzega's content and links to their official external download links ever made." name="twitter:description" />
-		<meta content="hsl(194, 40%, 62%)" name="theme-color" />
 		<link href="../defs/apple-icon-192.png" rel="apple-touch-icon" sizes="192x192" />
+		<meta charset="utf-8" content="Crimzega Sulvic" name="author" />
+		<meta content="The essentially official Maven Repository for all custom functionality created by Crimzega." name="description" />
+		<meta content="Crimzega Sulvic, MrSulvic, CDS, Crimzega's Website, Sulvic Website, MrSulvic's Website, CDS-Site, Sulvic Contents, Crimzega's Maven Repos, Sulvic Maven Repos, MrSulvic's Maven Repos" name="keywords" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<!-- Facebook functionality -->
+		<meta content="https://crimzega.com/maven/" property="og:url" />
+		<meta content="website" property="og:type" />
+		<meta content="Crimzega's Maven Repos" property="og:title" />
+		<meta content="The essentially official Maven Repository for all custom functionality created by Crimzega." property="og:description" />
+		<meta content="favicon.ico" property="og:image" />
+		<!-- Twitter functionality -->
+		<meta content="Crimzega's Maven Repos" name="twitter:title" />
+		<meta content="The essentially official Maven Repository for all custom functionality created by Crimzega." name="twitter:description" />
+		<meta content="hsl(194, 40%, 62%)" name="theme-color" />
 		<title>Crimzega's Maven Repos</title>
 	</head>
 	<body>
@@ -132,11 +61,11 @@
 				</svg>
 			</div>
 			<div id="search">
-				<form action="search.html">
+				<form action="search.php">
 					<input name="query" />
 					<button type="submit">
 						<svg height="24" viewBox="0 0 32 32" width="24" xmlns="http://www.w3.org/2000/svg">
-							<style><![CDATA[
+							<style>
 							g{
 								stroke-linecap: round;
 								stroke-linejoin: round;
@@ -157,7 +86,7 @@
 								transform: rotateZ(45deg);
 								transform-origin: center;
 							}
-							]]></style>
+							</style>
 							<g class="glass">
 								<ellipse cx="22.8" cy="9.2" stroke-width="2.2" rx="8.5" ry="8.5" />
 								<path d="M17.78,10.55 A5.2,5.2,0,0,1,24.15,4.18" stroke-width='1.2' />
@@ -170,32 +99,31 @@
 					</button>
 				</form>
 			</div>
-			<div id="registry">
-							</div>
+			<div id="empty">
+				
+			</div>
 			</header>
 			<sulvic-content>
 				<sulvic-drawer>
-					<a href="/">Home Page</a>
+					<a href="/">Home</a>
 					<hr />
-					<a href="/core.html?data=videos">Videos</a>
+					<a href="/core.php?data=videos">Videos</a>
 					<hr />
-					<a href="/core.html?data=songs">Songs</a>
+					<a href="/core.php?data=songs">Songs</a>
 					<hr />
-					<a href="/core.html?data=images">Images</a>
+					<a href="/core.php?data=images">Images</a>
 					<hr />
-					<a href="/core.html?data=programs">Programs</a>
+					<a href="/core.php?data=programs">Programs</a>
 					<hr />
-					<a href="/core.html?data=mods">Mods</a>
+					<a href="/core.php?data=mods">Mods</a>
 					<hr />
-					<a href="/core.html?data=theatre">Theatre</a>
+					<a href="/core.php?data=movies">Movies</a>
 					<hr />
 					<a href="/forums/">Forums</a>
 					<hr />
 					<a href="/wiki/">Wiki</a>
 					<hr />
 					<a href="/maven/">Maven</a>
-					<hr />
-					<a href="/about.html">About</a>
 				</sulvic-drawer>
 				<main-content>
 					<h1>Maven Repos</h1>
@@ -205,19 +133,19 @@
 			</sulvic-content>
 			<footer>
 				<nav>
-					<a href="/">Home Page</a>
-					<a href="core.html?data=videos">Videos</a>
-					<a href="core.html?data=songs">Songs</a>
-					<a href="core.html?data=images">Images</a>
-					<a href="core.html?data=programs">Programs</a>
-					<a href="core.html?data=mods">Mods</a>
-					<a href="core.html?data=theatre">Theatre</a>
+					<a href="/">Home</a>
+					<a href="core.php?data=videos">Videos</a>
+					<a href="core.php?data=songs">Songs</a>
+					<a href="core.php?data=images">Images</a>
+					<a href="core.php?data=programs">Programs</a>
+					<a href="core.php?data=mods">Mods</a>
+					<a href="core.php?data=movies">Movies</a>
+					<a href="/ilspy/">ILSpy</a>
 					<a href="/forums/">Forums</a>
 					<a href="/wiki/">Wiki</a>
 					<a href="/maven/">Maven</a>
-					<a href="about.html">About</a>
 				</nav>
-				<p>&copy; 2023 Crimzega Sulvic</p>
+				<p>&copy; 2024 Crimzega Sulvic</p>
 			</footer>
 		</sulvic-container>
 		<script type="module">
@@ -294,19 +222,7 @@
 		}
 
 		const gradleViewer = document.querySelector('gradle-viewer');
-		const mavens = [
-			"com.sulvic:sulvic-engine:1.0",
-			"com.sulvic:sulvic-engine:1.1",
-			"com.sulvic:sulvic-glfw:1.0",
-			"com.sulvic:sulvic-glfw:1.1",
-			"com.sulvic:sulvic-jopt:1.0",
-			"com.sulvic:sulvic-jopt:1.1",
-			"com.sulvic:sulvic-jopt:1.2",
-			"com.sulvic:sulvic-utils:1.0",
-			"com.sulvic:sulvic-utils:1.1",
-			"com.sulvic:sulvic-utils:1.2",
-			"com.sulvic:sulvic-utils:1.3"
-		];
+		const mavens = ["com.sulvic:sulvic-engine:1.0","com.sulvic:sulvic-engine:1.1","com.sulvic:sulvic-glfw:1.0","com.sulvic:sulvic-glfw:1.1","com.sulvic:sulvic-jopt:1.0","com.sulvic:sulvic-jopt:1.1","com.sulvic:sulvic-jopt:1.2","com.sulvic:sulvic-utils:1.0","com.sulvic:sulvic-utils:1.1","com.sulvic:sulvic-utils:1.2","com.sulvic:sulvic-utils:1.3","com.sulvic:sulvic-utils:1.4"]
 
 		for(var maven of mavens){
 			var gradle = await Gradle.loadData(maven);

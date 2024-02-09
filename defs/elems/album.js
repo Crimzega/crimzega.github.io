@@ -1,6 +1,8 @@
 class SulvicAlbumHandlerElement extends HTMLElement{
 	constructor(){
-		if(!this.hasAttribute("src")) console.err("Uncaught LinkError: \"src\" is not defined.");
+		super();
+		if(!this.hasAttribute("src") || this.getAttribute("src") === "") console.error("Uncaught TypeError: \"src\" is not defined.");
+		console.log(SulvicIO.getFileText(this.getAttribute("src")));
 	}
 }
 
