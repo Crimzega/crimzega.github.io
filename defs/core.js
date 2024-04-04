@@ -16,7 +16,7 @@ class SulvicIO{
 						else reject({ info: "An error has occured", message: this.statusText, response: this.status });
 					}
 				};
-				xhr.onerror = function(){ reject({ info: "An error has occured", message: th.statusText, response: this.status }); };
+				xhr.onerror = function(){ reject({ info: "An error has occured", message: this.statusText, response: this.status }); };
 				xhr.send();
 			});
 		};
