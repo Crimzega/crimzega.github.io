@@ -7,3 +7,4 @@ class SulvicAlbumHandlerElement extends HTMLElement{
 }
 
 customElements.define("album-handler", SulvicAlbumHandlerElement);
+window.SulvicAlbumHandlerElement = SulvicAlbumHandlerElement
