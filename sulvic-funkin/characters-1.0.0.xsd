@@ -1,0 +1,82 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://crimzega.github.io/sulvic-funkin/characters-1.0.0"
+	vc:minVersion="1.1"	xmlns:tns="http://crimzega.github.io/sulvic-funkin/characters-1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+	xsi:schemaLocation="http://www.w3.org/XML/XMLSchema/v1.1">
+	<xs:element name="characters">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:character" minOccurs="1" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="character">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded" minOccurs="0">
+					<xs:element ref="tns:prefix"></xs:element>
+					<xs:element ref="tns:indices"></xs:element>
+				</xs:choice>
+				<xs:element ref="tns:conditional" maxOccurs="unbounded" minOccurs="0"></xs:element>
+			</xs:sequence>
+			<xs:attribute default="idle" name="playAnim" type="xs:string" use="optional"></xs:attribute>
+			<xs:attribute name="atlas" type="xs:string" use="required"></xs:attribute>
+			<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+			<xs:attribute default="false" name="isPlayer" type="xs:boolean" use="optional"></xs:attribute>
+			<xs:attribute default="0.0" name="x" type="xs:double" use="optional"></xs:attribute>
+			<xs:attribute default="0.0" name="y" type="xs:double" use="optional"></xs:attribute>
+			<!--xs:assert test="(@x and @y) or (not(@x) and not (@y))"></xs:assert>-->
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="prefix">
+		<xs:complexType>
+			<xs:attributeGroup ref="tns:animationData"></xs:attributeGroup>
+			<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+			<xs:attribute name="quick" type="xs:boolean" use="optional"></xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required"></xs:attribute>
+			<!--<xs:assert test="not(@quick) or (not(@framerate and not(@loops))"></xs:assert>-->
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="indices">
+		<xs:complexType>
+			<xs:attributeGroup ref="tns:animationData"></xs:attributeGroup>
+			<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+			<xs:attribute name="postfix" type="xs:string" use="optional"></xs:attribute>
+			<xs:attribute name="prefix" type="xs:string" use="required"></xs:attribute>
+			<xs:attribute name="values" use="required">
+				<xs:simpleType>
+					<xs:list itemType="xs:integer"></xs:list>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="conditional">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:true" maxOccurs="1" minOccurs="1"></xs:element>
+				<xs:element ref="tns:false" maxOccurs="1" minOccurs="1"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="if" type="xs:string" use="required"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="tns:prefix"></xs:element>
+				<xs:element ref="tns:indices"></xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="false">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="tns:prefix"></xs:element>
+				<xs:element ref="tns:indices"></xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="animationData">
+		<xs:attribute default="30" name="framerate" type="xs:positiveInteger" use="optional"></xs:attribute>
+		<xs:attribute default="false" name="loops" type="xs:boolean" use="optional"></xs:attribute>
+	</xs:attributeGroup>
+</xs:schema>
