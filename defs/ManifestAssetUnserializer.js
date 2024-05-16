@@ -1,5 +1,5 @@
 (() => {
-	hxClasses = [], hxEnums = [];
+	var $hxClasses = [], $hxEnums = [];
 
 	class HxOverrides{
 
@@ -28,7 +28,7 @@
 
 	}
 
-	hxClasses.HxOverrides = HxOverrides;
+	$hxClasses.HxOverrides = HxOverrides;
 	HxOverrides.__name__ = "HxOverrides";
 
 	class Reflect{
@@ -46,7 +46,7 @@
 
 	}
 
-	hxClasses.Reflect = Reflect;
+	$hxClasses.Reflect = Reflect;
 	Reflect.__name__ = "Reflect";
 
 	class Type{
@@ -64,7 +64,7 @@
 
 	}
 
-	hxClasses.Type = Type;
+	$hxClasses.Type = Type;
 	Type.__name__ = "Type";
 
 	class haxe_Unserializer{
@@ -361,20 +361,20 @@
 
 	}
 
-	hxClasses["haxe.Unserializer"] = haxe_Unserializer;
+	$hxClasses["haxe.Unserializer"] = haxe_Unserializer;
 	haxe_Unserializer.__name__ = "haxe.Unserializer";
 
 	class haxe__Unserializer_DefaultResolver{
 
 		constructor(){}
 
-		static resolveClass(name){ return hxClasses[name]; }
+		static resolveClass(name){ return $hxClasses[name]; }
 
-		static resolveEnum(name){ return hxEnums[name]; }
+		static resolveEnum(name){ return $hxEnums[name]; }
 
 	}
 
-	hxClasses["haxe._Unserializer.DefaultResolver"] = haxe__Unserializer_DefaultResolver;
+	$hxClasses["haxe._Unserializer.DefaultResolver"] = haxe__Unserializer_DefaultResolver;
 	haxe__Unserializer_DefaultResolver.__name__ = "haxe._Unserializer.DefaultResolver";
 
 	class haxe__Unserializer_NullResolver{
@@ -394,7 +394,7 @@
 
 	}
 
-	hxClasses["haxe._Unserializer.NullResolver"] = haxe__Unserializer_NullResolver;
+	$hxClasses["haxe._Unserializer.NullResolver"] = haxe__Unserializer_NullResolver;
 	haxe__Unserializer_NullResolver.__name__ = "haxe._Unserializer.NullResolver";
 
 	class haxe_ds_List{
@@ -423,7 +423,7 @@
 
 	}
 
-	hxClasses["haxe.ds.List"] = haxe__Unserializer_NullResolver;
+	$hxClasses["haxe.ds.List"] = haxe__Unserializer_NullResolver;
 	haxe_ds_List.__name__ = "haxe.ds.List";
 
 	class haxe_ds__List_ListNode{
@@ -438,7 +438,7 @@
 
 	}
 
-	hxClasses["haxe.ds._List.ListNode"] = haxe__Unserializer_NullResolver;
+	$hxClasses["haxe.ds._List.ListNode"] = haxe__Unserializer_NullResolver;
 	haxe_ds__List_ListNode.__name__ = "haxe.ds._List.ListNode";
 
 	class haxe_ds_IntMap{
@@ -455,7 +455,7 @@
 
 	}
 
-	hxClasses["haxe.ds.IntMap"] = haxe_ds_IntMap;
+	$hxClasses["haxe.ds.IntMap"] = haxe_ds_IntMap;
 	haxe_ds_IntMap.__name__ = "haxe.ds.IntMap";
 
 	class haxe_ds_ObjectMap{
@@ -470,14 +470,14 @@
 
 		set(key, value){
 			var id = key.__id__;
-			if(id == null) id = (obj__id__ = $global.haxeUID++);
+			if(id == null) id = (obj__id__ = $global.$haxeUID++);
 			h[id] = value;
 			h.__keys__[id] = key;
 		}
 
 	}
 
-	hxClasses["haxe.ds.ObjectMap"] = haxe_ds_ObjectMap;
+	$hxClasses["haxe.ds.ObjectMap"] = haxe_ds_ObjectMap;
 	haxe_ds_ObjectMap.__name__ = "haxe.ds.ObjectMap";
 
 	class haxe_ds_StringMap{
@@ -494,7 +494,7 @@
 
 	}
 
-	hxClasses["haxe.ds.StringMap"] = haxe_ds_StringMap;
+	$hxClasses["haxe.ds.StringMap"] = haxe_ds_StringMap;
 	haxe_ds_StringMap.__name__ = "haxe.ds.StringMap";
 
 	haxe_Unserializer.DEFAULT_RESOLVER = new haxe__Unserializer_DefaultResolver();
