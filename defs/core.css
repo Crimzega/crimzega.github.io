@@ -9,10 +9,11 @@
 	--error-bg-color: hsl(0, 0%, 80%);
 	--error-bg-img: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25)), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25));
 	--error-hr-border-color: hsl(0, 0%, 75%);
-	--gradle-bg-color: hsl(0, 0%, 87%);
-	--header-bg-color: hsl(0, 0%, 80%);
+	--field-color: hsl(0, 0%, 30%);
 	--footer-bg-color: hsl(0, 0%, 65%);
 	--footer-link-color: hsl(0, 0%, 0%);
+	--gradle-bg-color: hsl(0, 0%, 87%);
+	--header-bg-color: hsl(0, 0%, 80%);
 	--link-color: hsl(187, 100%, 37%);
 	--maven-link-color: hsl(265, 47%, 53%);
 	--paginator-button-bg-active: hsl(0, 0%, 65%);
@@ -153,6 +154,14 @@ sulvic-container h1, sulvic-container h2, sulvic-container h3, sulvic-container 
 	margin-bottom: 0.75em;
 	margin-top: 0.75em;
 	text-align: center;
+}
+
+sulvic-container button, sulvic-container input, sulvic-container input[type], sulvic-container pre, sulvic-container textarea{
+	background-color: var(--field-color);
+	border-color: var(--border-color);
+	border-style: solid;
+	border-width: thin;
+	color: var(--text-color);
 }
 
 sulvic-container main-content{
@@ -351,6 +360,10 @@ gradle-viewer sulvic-gradle .path{
 	font-size: 16px;
 }
 
+pre{
+	tab-size: 4;
+}
+
 .drawer-handler{
 	--svg-text-color: hsl(46, 58%, 86%);
 	--svg-text-hover-color: hsl(158, 58%, 72%);
@@ -393,7 +406,7 @@ gradle-viewer sulvic-gradle .path{
 
 	:root{
 		--bg-color: hsl(0, 0%, 10%);
-		--border-color: hsl(0, 0%, 15%);
+		--border-color: hsl(0, 0%, 45%);
 		--border-search-bg: hsl(0, 0%, 35%);
 		--border-search-color: hsl(0, 0%, 5%);
 		--drawer-bg-color: hsl(0, 0%, 35%);
@@ -401,6 +414,8 @@ gradle-viewer sulvic-gradle .path{
 		--error-bg-color: hsl(0, 0%, 20%);
 		--error-bg-img: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25)), linear-gradient(to left, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25));
 		--error-hr-border-color: hsl(0, 0%, 40%);
+		--field-color: hsl(0, 0%, 25%);
+		--footer-bg-color: hsl(0, 0%, 50%);
 		--footer-bg-color: hsl(0, 0%, 2.5%);
 		--footer-link-color: hsl(200, 60%, 48%);
 		--gradle-bg-color: hsl(0, 0%, 25%);
