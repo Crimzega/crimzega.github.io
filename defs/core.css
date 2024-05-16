@@ -362,6 +362,7 @@ gradle-viewer sulvic-gradle .path{
 
 pre{
 	tab-size: 4;
+	overflow-y: auto;
 }
 
 .drawer-handler{
