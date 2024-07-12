@@ -209,7 +209,7 @@ sulvic-list{
 	display: block;
 	text-align: center;
 }
-sulvic-list #album-viewer{
+sulvic-list album-viewer{
 	background-color: skyblue;
 	background-size: contain;
 	border-color: blueviolet;

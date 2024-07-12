@@ -62,7 +62,7 @@ $(function(){
 	async function populatePage(entry, index){
 		var json = await getJson(`crimzega-sulvic/${entry}.json`);
 		var imgUrl = `url('crimzega-sulvic/${entry}/folder.png')`;
-		container.insertAt(index, $('<div>').data('album', entry).attr('id', 'album-viewer').attr('title', json.album).css('background-image', imgUrl).click(function(){
+		container.insertAt(index, $('<album-viewer>').data('album', entry).attr('title', json.album).css('background-image', imgUrl).click(function(){
 			openAlbum($(this), json);
 		}));
 	};
