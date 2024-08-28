@@ -22,6 +22,7 @@
 	--paginator-button-border-color: hsl(0, 0%, 75%);
 	--paginator-button-text-active: hsl(80, 100%, 70%);
 	--paginator-button-text-color: hsl(164, 96%, 36%);
+	--paginator-button-text-hover: hsl(164, 56%, 76%);
 	--text-color: hsl(225, 82%, 59%);
 	--search-icon-color: hsl(0, 0%, 60%);
 	--scrollbar-main-color: hsl(0, 0%, 65%);
@@ -249,7 +250,7 @@ sulvic-paginator{
 	flex-direction: column;
 }
 
-sulvic-paginator .page-index{
+sulvic-paginator .page-indices{
 	display: flex;
 	list-style-type: none;
 	margin-left: auto;
@@ -258,7 +259,7 @@ sulvic-paginator .page-index{
 	padding-right: 0px;
 }
 
-sulvic-paginator .page-index li{
+sulvic-paginator .page-indices li{
 	background-color: var(--paginator-button-bg-color);
 	border-style: solid;
 	border-color: var(--paginator-button-border-color);
@@ -267,40 +268,61 @@ sulvic-paginator .page-index li{
 	margin-right: 3px;
 }
 
-sulvic-paginator .page-index li a{
+sulvic-paginator .page-indices li a{
 	color: var(--paginator-button-text-color);
 	display: inline-block;
 	font-weight: bold;
-	padding-bottom: 4px;
-	padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 4px;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	width: 2rem;
 }
 
-sulvic-paginator .page-index li.active{
+sulvic-paginator .page-indices li.active{
 	background-color: var(--paginator-button-bg-active);
 	border-color: var(--paginator-button-border-active);
 }
 
-sulvic-paginator .page-index li.active a{
+sulvic-paginator .page-indices li.active a{
 	color: var(--paginator-button-text-active);
 }
 
-sulvic-paginator .page-index li:not(.active) a:hover{
+sulvic-paginator .page-indices li:not(.active) a:hover{
 	color: var(--paginator-button-text-hover);
 	cursor: pointer;
 }
 
-sulvic-paginator .page-view{
+sulvic-paginator .page-indices li.hidden{
+	display: none;
+}
+
+sulvic-paginator .page-indices li.extras{
+	border-style: none;
+	background-color: transparent;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+sulvic-paginator .page-indices li.extras a{
+	font-weight: normal;
+	cursor: text;
+}
+
+sulvic-paginator .page-indices li.extras a:hover{
+	color: var(--paginator-button-text-color);
+	cursor: text;
+}
+
+sulvic-paginator .page-viewer{
 	margin-left: auto;
 	margin-right: auto;
 }
 
-sulvic-paginator .page-view page-viewer{
+sulvic-paginator .page-viewer page-view{
 	display: block;
 }
 
-sulvic-paginator .page-view page-viewer:not(.opened){
+sulvic-paginator .page-viewer page-view:not(.opened){
 	display: none;
 }
 
@@ -429,6 +451,7 @@ pre{
 		--paginator-button-border-color: hsl(0, 0%, 40%);
 		--paginator-button-text-active: hsl(220, 80%, 62%);
 		--paginator-button-text-color: hsl(240, 60%, 74%);
+		--paginator-button-text-hover: hsl(240, 50%, 84%);
 		--search-icon-color: hsl(0, 0%, 70%);
 		--text-color: hsl(29, 42%, 82%);
 		--scrollbar-main-color: hsl(0, 0%, 20%);
