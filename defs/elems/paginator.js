@@ -11,7 +11,6 @@ class SulvicPaginator extends HTMLElement{
 
 		var noEnds = false;
 		if(this.hasAttribute("no-ends")) noEnds = this.getAttribute("no-ends") === "true" || this.getAttribute("no-ends") === "";
-		
 
 		if(!noEnds){
 			var pageBtn = document.createElement("li");
@@ -46,7 +45,7 @@ class SulvicPaginator extends HTMLElement{
 			pageBtn.append(pageTxt);
 		}
 
-		for(var elem of list.children) elem.onclick = function(){
+		let switchPageFunc = function(){
 			var index = this.dataset.pageId;
 			for(var elem1 of list.children) elem1.classList.remove("active");
 			for(var elem1 of viewport.children) elem1.classList.remove("opened");
@@ -54,9 +53,26 @@ class SulvicPaginator extends HTMLElement{
 			viewport.children[index].classList.add("opened");
 		}
 
+		for(var elem of list.children) elem.onclick = switchPageFunc;
+
 		this.innerHTML = "";
 		for(var elem of list.children) if(elem.dataset.pageId == 0) elem.classList.add("active");
 		viewport.children[0].classList.add("opened");
+
+		this.appendNewEntry = function(entry){
+			childElems.push(entry);
+			var viewer = document.createElement("page-viewer");
+			var pageBtn = document.createElement("li");
+			var pageTxt = document.createElement("a");
+			viewer.dataset.pageId = pageBtn.dataset.pageId = i;
+			pageTxt.innerHTML = i + 1;
+			list.append(pageBtn);
+			pageBtn.append(pageTxt);
+			viewer.append(childElems[i]);
+			viewport.append(viewer);
+			pageBtn.onclick = switchPageFunc;
+		}
+
 		this.append(viewport, list);
 /*		this.attachShadow({ mode: 'open' });
 		const mainElem = this;
