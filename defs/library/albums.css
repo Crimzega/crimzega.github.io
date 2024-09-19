@@ -26,8 +26,8 @@ modal-container album-loader{
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-in-out;
-	border-color: darkgray;
-	border-top-color: green;
+	border-color: #404040;
+	border-top-color: #00FF00;
 	border-bottom-left-radius: 50%;
 	border-bottom-right-radius: 50%;
 	border-top-left-radius: 50%;
@@ -73,13 +73,13 @@ modal-container album-modal .album-info{
 }
 
 modal-container album-modal .album-image{
-	background-color: black;
+	background-color: #000000;
 	background-size: contain;
 	border-bottom-left-radius: 2em;
 	border-bottom-right-radius: 2em;
 	border-top-left-radius: 2em;
 	border-top-right-radius: 2em;
-	border-color: white;
+	border-color: #FFFFFF;
 	border-style: ridge;
 	border-width: 0.6em;
 	display: inline-block;
@@ -131,9 +131,15 @@ modal-container modal-closer{
 }
 
 modal-container album-modal .album-list audio::-webkit-media-controls-current-time-display, modal-container album-modal .album-list audio::-webkit-media-controls-time-remaining-display{
-	color: lightgray;
-	box-shadow: none;
-	text-shadow: 0 0 4px lightgray;
+    color: #C8C8C8;
+    box-shadow: none;
+    text-shadow: 0 0 4px #202020;
+}
+
+modal-container album-modal .album-list .song:nth-child(even) audio::-webkit-media-controls-current-time-display, modal-container album-modal .album-list .song:nth-child(even) audio::-webkit-media-controls-time-remaining-display{
+    color: #000000;
+    box-shadow: none;
+    text-shadow: 0 0 2px #d0d0d0;
 }
 
 modal-container album-modal .album-list .song audio::-webkit-media-controls-panel{
@@ -177,8 +183,8 @@ base-container h1{
 }
 
 button.runner{
-	background-color: lightgreen;
-	box-shadow: 0px 0px 10px lightgreen;
+	background-color: #80FF80;
+	box-shadow: 0px 0px 10px #80FF80;
 	border-bottom: none;
 	border-left: none;
 	border-right: none;
@@ -198,21 +204,21 @@ button.runner{
 	width: 6em;
 }
 button.runner:hover{
-	background-color: orange;
-	box-shadow: 0 0 16px orange;
+	background-color: #FF8000;
+	box-shadow: 0 0 16px #FF8000;
 }
 button.runner:active{
-	background-color: purple;
-	box-shadow: 0 0 16px purple;
+	background-color: #800080;
+	box-shadow: 0 0 16px #800080;
 }
 sulvic-list{
 	display: block;
 	text-align: center;
 }
 sulvic-list album-viewer{
-	background-color: skyblue;
+	background-color: #87CEEB;
 	background-size: contain;
-	border-color: blueviolet;
+	border-color: #8A2BE2;
 	border-bottom-left-radius: 0.8em;
 	border-bottom-right-radius: 0.8em;
 	border-top-left-radius: 0.8em;
@@ -235,7 +241,7 @@ sulvic-list album-viewer{
 }
 
 #button-loc .album-saver{
-	background-image: linear-gradient(to bottom, #E0E0E0, #f0f0f0, #E0E0E0);
+	background-image: linear-gradient(to bottom, #E0E0E0, #F0F0F0, #E0E0E0);
 	border-color: #BABABA;
 	border-style: solid;
 	border-width: thin;
