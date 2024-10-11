@@ -77,6 +77,11 @@ Math.toInt = value => {
 	return uValue > 2 ** 31? uValue - (2 ** 32): uValue;
 }
 
+Math.toInt24 = value => {
+	var uValue = Math.tiUInt24(value);
+	return uValue > 2 ** 23? uValue - (2 ** 24): uValue;
+};
+
 Math.toLong = value => {
 	var uValue = Math.toUInt(value);
 	return uValue > 2 ** 63? uValue - (2 ** 64): uValue;
@@ -93,6 +98,8 @@ Math.toShort = value => {
 }
 
 Math.toUInt = value => modulus(asInt(value), 2 ** 32);
+
+Math.toUInt24 = value => modulus(asInt(value), 2 ** 24);
 
 Math.toULong = value => modulus(asInt(value), 2 ** 64);
 
