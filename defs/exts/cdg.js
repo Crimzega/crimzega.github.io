@@ -183,7 +183,7 @@ footer .links a{
 	padding-top: 40px;
 }`;
 
-	if(urlPath.startwWith("/") document.querySelector(`.content.welcome > div`).removeAttribute("style");
+	if(urlPath.startsWith("/") setTimeout(() => { document.querySelector(`.content.welcome > div`).removeAttribute("style"); }, 50);
 	else if(urlPath.startsWith("/play/")){
 		var objPath = null, objSel = `ruffle-object#object`, cleaned = false;
 		if(document.querySelector(`#toggle-flash`).href.includes("ruffle")) objSel = objSel.substring(7);
