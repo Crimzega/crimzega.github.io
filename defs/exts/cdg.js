@@ -2,47 +2,6 @@
 	const DECODER = new TextDecoder(), FLASH_MIME = `application/x-shockwave-flash`;
 	let urlPath = location.pathname;
 
-	class SulvicIO{
-
-		static fileExists(url){
-			var xhr = new XMLHttpRequest();
-			xhr.open("HEAD", url, false);
-			xhr.send();
-			return xhr.status != 404;
-		}
-
-		static async getFile(url, type = "blob"){
-			var get = () => {
-				return new Promise((resolve, reject) => {
-					var xhr = new XMLHttpRequest();
-					xhr.open('GET', url);
-					xhr.responseType = type;
-					xhr.onload = function(){ console.log(`Attempting to grab the requested file content.`); };
-					xhr.onreadystatechange = function(){
-						if(this.readyState == XMLHttpRequest.DONE){
-							if(this.status >= 200 && this.status < 300) resolve(type === 'text'? this.responseText: this.response);
-							else reject({ info: "An error has occured", message: this.statusText, response: this.status });
-						}
-					};
-					xhr.onerror = function(){ reject({ info: "An error has occured", message: this.statusText, response: this.status }); };
-					xhr.send();
-				});
-			};
-			return await get();
-		}
-		static downloadFile(url, fileName = null, type = "blob"){
-			SulvicIO.getFile(url, type).then(data => {
-				console.log(`Attempting to download the requested contents.`);
-				var dl = document.createElement("a");
-				dl.setAttribute("download", fileName);
-				dl.href = URL.createObjectURL(new Blob([data], { type: "application/octet-stream" }));
-				dl.click();
-				setTimeout(() => { dl.remove(); }, 100);
-			});
-		}
-
-	}
-
 	function assert(check, msg){ if(!check) throw new Error(msg || "Assertion failed"); }
 
 	function waitFor(sel, timeout = 10000, interval = 1000){
