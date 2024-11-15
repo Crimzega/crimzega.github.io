@@ -1,5 +1,5 @@
 (() => {
-	const DECODER = new TextDecoder(), FLASH_MIME = `application/x-shockwave-flash`;
+	const DECODER = new TextDecoder();
 	let urlPath = location.pathname;
 
 	function assert(check, msg){ if(!check) throw new Error(msg || "Assertion failed"); }
@@ -142,60 +142,13 @@ footer .links a{
 	padding-top: 40px;
 }`;
 	document.head.append(univStyleElem);
-
 	if(urlPath == "/") setTimeout(() => { document.querySelector(`.content.welcome > div`).removeAttribute("style"); }, 50);
 	else if(urlPath.startsWith("/play/")){
-		var objPath = null, objSel = `ruffle-object#object`, cleaned = false;
+		var objSel = `ruffle-object#object`;
 		if(document.querySelector(`#toggle-flash`).href.includes("ruffle")) objSel = objSel.substring(7);
-		function build(elem){
-			var baseElem = elem.querySelector(`param[name="base"]`);
-			if(baseElem != null){
-				self.downloadChildSWF = function(subUrl){
-					var swfUrl = `${baseElem.getAttribute("value")}${subUrl}.swf`;
-					var swfName = `${subUrl.substr(subUrl.lastIndexOf("/") + 1)}.swf`;
-					if(SulvicIO.fileExists(swfUrl)){
-						SulvicIO.downloadFile(swfUrl, swfName, FLASH_MIME);
-					}
-				}
-			}
-			objPath = elem.getAttribute("data");
-			if(objPath != null) dlBtn.classList.remove("disabled");
-		}
-		var dlStyle = document.createElement("style");
-		dlStyle.innerText = `#download.game-button{
-		border-style: solid;
-		border-width: 1px;
-	}
-	#download.game-button:not(.disabled){
-		background-image: linear-gradient(to bottom, #00AA00, #006600);
-		border-color: #0A0;
-	}
-	#download.game-button.disabled{
-		background-image: linear-gradient(to bottom, #666666, #444444);
-		border-color: #666;
-	}
-`;
-		let dlBtn = document.createElement("span");
-		dlBtn.classList.add("left", "game-button", "disabled");
-		dlBtn.id = "download";
-		dlBtn.innerText = "Download";
-		dlBtn.onclick = function(){
-			if(!this.classList.contains("disabled")){
-				var gameNameElem = document.querySelector(".game-title a");
-				var dlName = `${ gameNameElem }.swf`;
-				SulvicIO.downloadFile(objPath, dlName, FLASH_MIME);
-			}
-		}
-		document.head.append(dlStyle);
-		document.querySelector(".game-buttons > .left").appendChild(dlBtn);
-		document.querySelector(`#toggle-comments.game-button`).addEventListener("click", function(){
-			if(!cleaned){
-				setTimeout(() => { document.querySelectorAll(`#comments .comments p.wrap`).forEach(patch)}, 50);
-				cleaned = true;
-			}
-		});
-		waitUntil(`#dprerollstatus .clickable`).then(elem => { elem.addEventListener("click", function(){ waitFor(objSel, 200, 50).then(build); }); });
-		waitUntil(objSel).then(build);
+		waitUntil(objSel).then(populatePlayPage);
 	}
 	else if(urlPath.startsWith("/forum/topic/")) setTimeout(() => { document.querySelectorAll(`.topic p.wrap`).forEach(patch); }, 50);
+	window.waitFor = waitFor;
+	window.waitUntil = waitUntil;
 })();
