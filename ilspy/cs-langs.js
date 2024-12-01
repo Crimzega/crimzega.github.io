@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function highlight(){
 		setTimeout(() => { hljs.highlightBlock(decompView); }, 20);
-		setTimeout(() => { hljs.highlightBlock(sourceView); ], 40);
+		setTimeout(() => { hljs.highlightBlock(sourceView); }, 40);
 	}
 
 	selector.addEventListener("change", () => { getData().then(data => { setData(data).then(() => { highlight(); }); }); });
