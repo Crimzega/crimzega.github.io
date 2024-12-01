@@ -18,10 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	function setData(data){
 		decompView.innerText = data.decomp;
 		sourceView.innerText = data.source;
-		setTimeout(() => {
-			hljs.highlightBlock(decompView);
-			hljs.highlightBlock(sourceView);
-		}, 40);
+		setTimeout(() => { hljs.highlightBlock(decompView); }, 100);
+		setTimeout(() => { hljs.highlightBlock(sourceView); }, 200);
 	}
 
 	selector.addEventListener("change", () => { getData().then(setData) });
