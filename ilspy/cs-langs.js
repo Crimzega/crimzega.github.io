@@ -1,25 +1,30 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", () => {
+	const selector = document.querySelector(`#file-select`);
+	const decompView = document.querySelector(`code-view #file-code.decomp`);
+	const sourceView = document.querySelector(`code-view #file-code.source`);
+	let storeTexts = {};
 
-	const selector = document.querySelector("#file-select");
-	const decompView = document.querySelector("code-view #file-code.decomp");
-	const sourceView = document.querySelector("code-view #file-code.source");
-	var storeTexts = {};
-
-	async function getSelection(){
-		var file = selector.value;
-		if(storeTexts[file] == null){
-			storeTexts[file] = {
-				decomp: await SulvicIO.getFileText(`deobf/${file}`),
-				source: await SulvicIO.getFileText(`orig/${file}`)
-			}
-		}
-		decompView.innerText = storeTexts[file].decomp;
-		sourceView.innerText = storeTexts[file].source;
-		hljs.highlightBlock(document.querySelector("code-view #file-code.decomp"));
-		hljs.highlightBlock(document.querySelector("code-view #file-code.source"));
+	async function getData(){
+		let file = selector.value;
+		let check = storeTexts[file] != null;
+		var data = check? storeTexts[file]: {
+			decomp: await SulvicIO.getFileText(`deobf/${file}`),
+			source: await SulvicIO.getFileText(`orig/${file}`)
+		};
+		return await file;
 	}
 
-	selector.addEventListener("change", function(){ getSelection(); });
-	getSelection();
+	async function setData(data){
+		decompView.innerText = data.decomp;
+		sourceView.innerText = data.source;
+	}
+
+	function highlight(){
+		hljs.highlightBlock(decompView);
+		hljs.highlightBlock(sourceView);
+	}
+
+	selector.addEventListener("change", () => { getData().then(data => { setData(data).then(() => { highlight(); }); }); });
+	getData().then(data => { setData(data).then(() => { highlight(); }); });
 
 });
