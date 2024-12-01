@@ -11,20 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
 			decomp: await SulvicIO.getFileText(`deobf/${file}`),
 			source: await SulvicIO.getFileText(`orig/${file}`)
 		};
-		return await file;
+		if(!check) storeTexts[file] = data;
+		return await data;
 	}
 
-	async function setData(data){
+	function setData(data){
 		decompView.innerText = data.decomp;
 		sourceView.innerText = data.source;
+		setTimeout(() => {
+			hljs.highlightBlock(decompView);
+			hljs.highlightBlock(sourceView);
+		}, 40);
 	}
 
-	function highlight(){
-		setTimeout(() => { hljs.highlightBlock(decompView); }, 20);
-		setTimeout(() => { hljs.highlightBlock(sourceView); }, 40);
-	}
-
-	selector.addEventListener("change", () => { getData().then(data => { setData(data).then(() => { highlight(); }); }); });
-	getData().then(data => { setData(data).then(() => { highlight(); }); });
+	selector.addEventListener("change", () => { getData().then(setData) });
+	getData().then(setData);
 
 });
