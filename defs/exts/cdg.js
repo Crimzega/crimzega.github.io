@@ -140,7 +140,13 @@ footer .links a{
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 40px;
-}`;
+}
+
+.download.game-button.disabled,.purchase.game-button{
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#7D7D7D),color-stop(100%,#5F5F5F));
+	border: 1px solid #5F5F5F;
+}
+`;
 	document.head.append(univStyleElem);
 	if(urlPath == "/") setTimeout(() => { document.querySelector(`.content.welcome > div`).removeAttribute("style"); }, 50);
 	else if(urlPath.startsWith("/play/")) waitUntil(`#object[type="application/x-shockwave-flash"`).then(populatePlayPage);
