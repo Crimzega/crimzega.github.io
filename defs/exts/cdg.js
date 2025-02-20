@@ -144,9 +144,8 @@ footer .links a{
 	document.head.append(univStyleElem);
 	if(urlPath == "/") setTimeout(() => { document.querySelector(`.content.welcome > div`).removeAttribute("style"); }, 50);
 	else if(urlPath.startsWith("/play/")){
-		var objSel = `ruffle-object#object`;
-		if(document.querySelector(`#toggle-flash`).href.includes("ruffle")) objSel = objSel.substring(7);
-		waitUntil(objSel).then(populatePlayPage);
+		var objSel = ;
+		waitUntil(`#object[type="application/x-shockwave-flash"`).then(populatePlayPage);
 	}
 	else if(urlPath.startsWith("/forum/topic/")) setTimeout(() => { document.querySelectorAll(`.topic p.wrap`).forEach(patch); }, 50);
 	window.waitFor = waitFor;
