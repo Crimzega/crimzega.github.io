@@ -149,7 +149,10 @@ footer .links a{
 `;
 	document.head.append(univStyleElem);
 	if(urlPath == "/") setTimeout(() => { document.querySelector(`.content.welcome > div`).removeAttribute("style"); }, 50);
-	else if(urlPath.startsWith("/play/")) waitUntil(`#object[type="application/x-shockwave-flash"`).then(populatePlayPage);
+	else if(urlPath.startsWith("/play/")){
+		window.patch = patch;
+		waitUntil(`#object[type="application/x-shockwave-flash"`).then(populatePlayPage);
+	}
 	else if(urlPath.startsWith("/forum/topic/")) setTimeout(() => { document.querySelectorAll(`.topic p.wrap`).forEach(patch); }, 50);
 	window.waitFor = waitFor;
 	window.waitUntil = waitUntil;
