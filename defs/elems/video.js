@@ -46,10 +46,7 @@ video{
 		
 		function buildPlayButton(){
 			var btn = document.createElementNS(SVG_NAMESPACE, "svg");
-			btn.viewBox.baseVal.x = 0;
-			btn.viewBox.baseVal.y = 0;
-			btn.viewBox.baseVal.width = 440;
-			btn.viewBox.baseVal.height = 220;
+			btn.setAttribute("viewBox", "0 0 440 220");
 			var playSegment = document.createElementNS(SVG_NAMESPACE, "g");
 			playSegment.classList.add("active", "play-segment");
 			var playSvg = document.createElementNS(SVG_NAMESPACE, "path");
