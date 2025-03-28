@@ -64,6 +64,8 @@ JSON.commonValuesByKey = function(obj, key){
 	return result;
 }
 
+Math.PHI = (1 / Math.sqrt(5)) / 2;
+
 Math.clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 Math.range = (min, max) => Math.random() * (max - min) + min;
@@ -105,6 +107,8 @@ Math.toULong = value => modulus(asInt(value), 2 ** 64);
 
 Math.toUShort = value => modulus(asInt(value), 2 ** 16);
 
+Math.trunc = Math.trunc || function(value){ return value | 0; }
+
 Math.wrap = (value, min, max) => (((value - min) % (max + 1 - min)) + (max + 1 - min)) % (max + 1 - min) + min;
 
 Math.toDegrees = function(rad){ return rad * (180 / Math.PI); }
@@ -122,64 +126,33 @@ Math.remap = function(value, min, max, min1, max1){
 String.format = String.format || function(format, ...args){ return format.replace(/{(\d*)}/g, (match, index) => { return typeof args[index] != undefined? args[index]: match }); }
 
 /* Custom Function Section */
-function getGBAColor(clr){
-	return {
-		r: (clr[0] / 255) * 31,
-		g: (clr[1] / 255) * 31,
-		b: (clr[2] / 255) * 31
-	};
-}
-
-function getClosestGBAColor(clr){
-
-}
-
-function getImagePalette(imgSrc, count){
-	return new Promise((resolve, reject) => {
-		var img = new Image();
-		img.crossOrigin = "Anonymous";
-		img.src = imgSrc;
-		img.onload = function(){
-			var canvas = document.createElement("canvas");
-			var ctx = canvas.getContext("2d");
-			var width = img.width;
-			var height = img.height;
-			ctx.drawImage(img, 0, 0, width, height);
-			var imgData = ctx.getImageData(0, 0, width, height).data;
-			var pixelCount = imgData.length / 4;
-			var clrMap = {}
-			for(var i = 0; i < pixelCount; i++){
-				var offset = i * 4;
-				var clr = {
-					r: imgData[offset],
-					g: imgData[offset + 1],
-					b: imgData[offset + 2],
-					a: imgData[offset + 3],
-				}
-				var rgb = `${clr.r},${clr.g},${clr.b},${clr.a}`;
-				if(rgb in clrMap) clrMap[rgb]++;
-				else clrMap[rgb] = 1;
-			}
-			var clrs = Object.keys(clrMap).sort((a, b) => { return clrMap[b] - clrMap[a]; });
-			resolve(clrs.slice(0, count).map(clr => { return clr.split(',').map(val => parseInt(val)); }));
-		}
-		img.onerror = function(){ reject(new Error(`Failed to load image: ${imgSrc}`)); }
-	});
-}
 
 /* Prototype functions section */
 Element.prototype.computedStyle = function(){ return getComputedStyle(this); }
 
-Number.prototype.padStart = function(maxLength = 2, fillString = '0', radix = 10){ return this.valueOf().toString(radix).padStart(maxLength, fillString); }
-
 Number.prototype.isPrecise = function(){
-	var temp = this.valueOf() - Math.floor(this.valueOf());
+	var temp = this.valueOf() % 1;
 	return temp > 0 && temp < 1;
 }
+
+Number.prototype.toLocaleString = function(locales = navigator.languages = options = { style: "decimal" }){ return new Intl/NumberFormat(locales, options).format(this.valueOf()); }
+
+Number.prototype.toBinary = function(){ return this.valueOf().toString(2); }
+
+Number.prototype.toHex = function(){ return this.valueOf().toString(16); }
+
+Number.prototype.toOctet = function(){ return this.valueOf().toString(8); }
+
+Number.prototype.padStart = function(maxLength = 2, fillString = '0', radix = 10){ return this.valueOf().toString(radix).padStart(maxLength, fillString); }
 
 if(!!Intl.NumberFormat) Number.prototype.toLocalString = function(){ return new Intl.NumberFormat(arguments).format(this.valueOf()); };
 
 Number.prototype.toHex = function(){ return this.toString(16); }
+
+String.prototype.isEither = function(){
+	for(var entry of arguments) if(this.valueOf() === entry) return true;
+	return false;
+}
 
 String.prototype.forEach = Array.prototype.forEach;
 
@@ -204,5 +177,5 @@ window.SulvicIO = SulvicIO;
 
 /* Import section */
 import "./elems/album.js";
+import "./elems/media.js";
 import "./elems/paginator.js";
-import "./elems/video.js";

@@ -1,0 +1,72 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"patternProperties": {
+		"^([a-z]\\w+)(\\.\\w+)+$": {
+			"type": "object",
+			"properties": {
+				"replace": {
+					"type": "boolean",
+					"default": false
+				},
+				"subtitle": {
+					"type": "array",
+					"anyOf": [{
+						"type": "string",
+						"pattern": "^([a-z]\\w+)(\\.\\w+)+$"
+					}],
+					"minItems": 1
+				},
+				"category": {
+					"type": "string",
+					"enum": ["master", "music", "record", "weather", "block", "hostile", "neutral", "player", "ambient", "voice", "sound"],
+					"default": "master"
+				},
+				"sounds": {
+					"type": "array",
+					"anyOf":[
+						{
+							"type": "string",
+							"pattern": "^([a-z]\\w+)(\/\\w+)+$"
+						},
+						{
+							"type": "object",
+							"additionalProperties": {
+								"properties": {
+									"name": {
+										"type": "string",
+										"pattern": "^([a-z]\\w+)(\/\\w+)+$"
+									},
+									"stream" :{
+										"type": "boolean",
+										"default": false
+									},
+									"is3D": {
+										"type": "boolean"
+									},
+									"volume": {
+										"type": "number",
+										"default": 1
+									},
+									"pitch": {
+										"type": "number",
+										"default": 1
+									},
+									"weight": {
+										"type": "integer",
+										"default": 1
+									}
+								},
+								"required": ["name"]
+							}
+						}
+					],
+					"minItems": 1
+				}
+			},
+			"required": ["category", "sounds"]
+		}
+	},
+	"minProperties": 1,
+	"additionalProperties": false
+}
