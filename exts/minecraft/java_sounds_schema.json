@@ -24,14 +24,14 @@
 				},
 				"sounds": {
 					"type": "array",
-					"anyOf":[
-						{
-							"type": "string",
-							"pattern": "^([a-z]\\w+)(\/\\w+)+$"
-						},
-						{
-							"type": "object",
-							"additionalProperties": {
+					"items": {
+						"anyOf":[
+							{
+								"type": "string",
+								"pattern": "^([a-z]\\w+)(\/\\w+)+$"
+							},
+							{
+								"type": "object",
 								"properties": {
 									"name": {
 										"type": "string",
@@ -59,8 +59,8 @@
 								},
 								"required": ["name"]
 							}
-						}
-					],
+						]
+					},
 					"minItems": 1
 				}
 			},
