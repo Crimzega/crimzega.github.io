@@ -64,7 +64,7 @@ JSON.commonValuesByKey = function(obj, key){
 	return result;
 }
 
-Math.PHI = (1 / Math.sqrt(5)) / 2;
+Math.PHI = (1 + Math.sqrt(5)) / 2;
 
 Math.clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
