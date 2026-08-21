@@ -1,3 +1,10 @@
 {
+	"[json]": {
+		"editor.quickSuggestions": {
+			"strings": true
+		},
+		"editor.suggest.insertMode": "replace",
+		"editor.formatOnSave": false
+	},
 	"xml.downloadExternalResources.enabled": true
 }
