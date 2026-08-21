@@ -1,3 +1,13 @@
 {
+	"[astro]": {
+		"editor.formatOnSave": false
+	},
+	"[json]": {
+		"editor.quickSuggestions": {
+			"strings": true
+		},
+		"editor.suggest.insertMode": "replace",
+		"editor.formatOnSave": true
+	},
 	"xml.downloadExternalResources.enabled": true
 }

@@ -1,0 +1,14 @@
+---
+interface Props{
+	addEnds?: boolean;
+	maxButtons?: number;
+}
+const{
+	addEnds,
+	maxButtons,
+} = Astro.props
+---
+
+<sulvic-paginator add-ends={addEnds} max-buttons={maxButtons}>
+						<slot>No content has been added into the Paginator.</slot>
+					</sulvic-paginator>

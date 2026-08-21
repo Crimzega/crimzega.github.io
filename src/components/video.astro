@@ -1,0 +1,20 @@
+---
+interface Props{
+	src: string;
+	poster?: string;
+	loop?: boolean;
+	preload?: "auto"|"metadata"|"none";
+	volume?: number;
+}
+
+const{
+	src,
+	poster,
+	loop,
+	preload,
+	volume
+} = Astro.props
+
+---
+
+<sulvic-video src={src} poster={poster} loop={loop} preload={preload} volume={volume}></sulvic-video>

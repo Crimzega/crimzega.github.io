@@ -1,0 +1,520 @@
+@charset 'utf-8';
+
+:root {
+	--bg-color: hsl(0, 0%, 90%);
+	--border-color: hsl(0, 0%, 45%);
+	--border-search-bg: hsl(0, 0%, 95%);
+	--border-search-color: hsl(0, 0%, 55%);
+	--drawer-bg-color: hsl(0, 0%, 75%);
+	--drawer-link-img: linear-gradient(to bottom, hsla(0, 0%, 15%, 0.25), transparent, transparent, hsla(0, 0%, 15%, 0.25));
+	--drawer-width: 15rem;
+	--field-color: hsl(0, 0%, 30%);
+	--footer-bg-color: hsl(0, 0%, 65%);
+	--footer-link-color: hsl(0, 0%, 0%);
+	--gradle-bg-color: hsl(0, 0%, 87%);
+	--header-bg-color: hsl(0, 0%, 80%);
+	--link-color: hsl(187, 100%, 37%);
+	--maven-link-color: hsl(265, 47%, 53%);
+	--paginator-button-bg-active: hsl(0, 0%, 65%);
+	--paginator-button-bg-color: hsl(0, 0%, 95%);
+	--paginator-button-border-active: hsl(0, 0%, 50%);
+	--paginator-button-border-color: hsl(0, 0%, 75%);
+	--paginator-button-text-active: hsl(80, 100%, 70%);
+	--paginator-button-text-color: hsl(164, 96%, 36%);
+	--paginator-button-text-hover: hsl(164, 56%, 76%);
+	--text-color: hsl(225, 82%, 59%);
+	--search-icon-color: hsl(0, 0%, 60%);
+	--scrollbar-main-color: hsl(0, 0%, 65%);
+	--scrollbar-second-color: hsl(0, 0%, 30%);
+	--moz-scrollbar-colors: ;
+}
+
+a[href] {
+	color: var(--link-color);
+	text-decoration: none;
+}
+
+body,
+html {
+	height: 100%;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	margin: 0;
+	overflow-y: hidden;
+}
+
+footer {
+	background-image: linear-gradient(to top, var(--footer-bg-color) 80%, transparent);
+	color: var(--text-color);
+	flex-shrink: 0;
+	padding-bottom: 0.5rem;
+	padding-top: 1.5rem;
+}
+
+footer nav {
+	display: flex;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	max-width: 42rem;
+	justify-content: space-between;
+	text-align: center;
+}
+
+footer p {
+	margin-bottom: 0;
+	margin-left: 0.8rem;
+	margin-top: 0;
+}
+
+header {
+	background-color: var(--header-bg-color);
+	display: flex;
+}
+
+header #empty {
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	max-width: 10rem;
+}
+
+header #icon {
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	max-width: 10rem;
+}
+
+header #search {
+	align-items: center;
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+}
+
+header #search button,
+header #search input {
+	background-color: var(--border-search-bg);
+	border-color: var(--border-search-color);
+	border-style: solid;
+	border-width: 2px;
+	outline: none;
+}
+
+header #search button {
+	align-content: center;
+	border-left-style: none;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+	display: grid;
+	grid-column: -3 / -1;
+	justify-content: center;
+}
+
+header #search form {
+	display: grid;
+	grid-template-columns: repeat(26, 1fr);
+	height: 2rem;
+	max-width: 40rem;
+	width: 40rem;
+}
+
+header #search input {
+	border-right-style: none;
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+	color: var(--text-color);
+	grid-column: 1 / span 24;
+	padding-left: 0.6rem;
+}
+
+sulvic-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: relative;
+}
+
+sulvic-container gradle-viewer {
+	display: block;
+	width: 60%;
+	margin-bottom: 4rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4rem;
+}
+
+sulvic-container gradle-viewer sulvic-gradle {
+	background-color: var(--gradle-bg-color);
+	border-color: var(--border-color);
+	border-style: solid;
+	border-width: thin;
+	display: flex;
+	flex-direction: column;
+	padding: 0.4rem;
+	margin: 0.6rem;
+}
+
+sulvic-container gradle-viewer .base-info {
+	margin-left: 1.25rem;
+}
+
+sulvic-container gradle-viewer .links {
+	border-top-color: var(--border-color);
+	border-top-style: solid;
+	border-top-width: thin;
+	display: grid;
+	margin-top: 0.3rem;
+	padding-top: 0.3rem;
+}
+
+sulvic-container gradle-viewer .links a {
+	color: var(--maven-link-color);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+sulvic-container gradle-viewer .name {
+	font-weight: bold;
+}
+
+sulvic-container gradle-viewer .name,
+sulvic-container gradle-viewer .version {
+	font-size: 22px;
+}
+
+sulvic-container gradle-viewer .path {
+	font-size: 16px;
+}
+
+sulvic-container h1,
+sulvic-container h2,
+sulvic-container h3,
+sulvic-container h4,
+sulvic-container h5,
+sulvic-container h6 {
+	margin-bottom: 0.75rem;
+	margin-top: 0.75rem;
+	text-align: center;
+}
+
+sulvic-container main-content {
+	left: 0;
+	position: relative;
+	overflow-y: auto;
+	scrollbar-color: var(--scrollbar-main-color) var(--scrollbar-second-color);
+	scrollbar-width: thin;
+	transition-property: left, width;
+	transition-duration: 0.25s;
+	width: 100%;
+}
+
+sulvic-container maven-viewer {
+	display: block;
+	margin-bottom: 4rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4rem;
+	width: 60%;
+}
+
+sulvic-container maven-viewer maven-core {
+	background-color: var(--gradle-bg-color);
+	display: flex;
+	flex-direction: column;
+	margin: 0.6rem;
+	padding: 0.4rem;
+}
+
+sulvic-container maven-viewer maven-core .path {
+	font-size: 16px;
+}
+
+sulvic-container maven-viewer maven-core maven-entry {
+	display: none;
+}
+
+sulvic-container maven-viewer maven-core maven-entry.opened {
+	display: block;
+}
+
+sulvic-container maven-viewer maven-core maven-links {
+	display: none;
+}
+
+sulvic-container maven-viewer maven-core maven-links.opened {
+	display: block;
+}
+
+sulvic-container maven-viewer a[href] {
+	color: var(--maven-link-color);
+	font-size: 16px;
+}
+
+sulvic-container maven-viewer maven-core maven-names {
+	font-size: 24px;
+}
+
+sulvic-container maven-viewer maven-core maven-versions {
+	font-size: 20px;
+}
+
+sulvic-container maven-viewer maven-core maven-names,
+sulvic-container maven-viewer maven-core maven-versions {
+	border-bottom-color: var(--border-color);
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	display: flex;
+	gap: 0.4rem;
+	padding-bottom: 0.4rem;
+}
+
+sulvic-container maven-viewer maven-core maven-names span,
+sulvic-container maven-viewer maven-core maven-versions span {
+	cursor: pointer;
+}
+
+sulvic-container maven-viewer maven-core maven-names span.selected,
+sulvic-container maven-viewer maven-core maven-versions span.selected {
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: default;
+}
+
+sulvic-container maven-viewer maven-core maven-versions {
+	margin-bottom: 0.4rem;
+	margin-top: 0.4rem;
+}
+
+sulvic-container main-content hr {
+	border-color: var(--border-color);
+	border-style: ridge;
+	border-width: 2px;
+	border-left-style: none;
+	border-right-style: none;
+	margin-left: 4rem;
+	margin-right: 4rem;
+}
+
+sulvic-container sulvic-content {
+	display: flex;
+	flex-basis: auto;
+	flex-grow: 1;
+	overflow: auto;
+}
+
+sulvic-container sulvic-drawer {
+	background-color: var(--drawer-bg-color);
+	display: flex;
+	flex-direction: column;
+	left: calc(var(--drawer-width) * -1);
+	position: absolute;
+	transition-duration: 0.25s;
+	transition-property: left;
+	text-align: center;
+	width: var(--drawer-width);
+	z-index: 1;
+}
+
+sulvic-container sulvic-drawer a {
+	background-image: var(--drawer-link-img);
+	padding-bottom: 0.4rem;
+	padding-top: 0.4rem;
+	width: 100%;
+}
+
+sulvic-container sulvic-drawer hr {
+	border-bottom: thin-solid var(--border-color);
+	margin: 0;
+}
+
+sulvic-container sulvic-drawer.opened {
+	left: 0;
+}
+
+sulvic-container sulvic-drawer.opened+main-content {
+	left: var(--drawer-width);
+	width: calc(100% - var(--drawer-width));
+}
+
+sulvic-container sulvic-video {
+	margin-bottom: 0.9rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.9rem;
+	height: 720px;
+	width: 1280px;
+}
+
+sulvic-paginator {
+	display: flex;
+	flex-direction: column;
+}
+
+sulvic-paginator .page-viewer {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+sulvic-paginator .page-viewer page-view {
+	display: block;
+}
+
+sulvic-paginator .page-viewer page-view:not(.opened) {
+	display: none;
+}
+
+sulvic-paginator .page-indices {
+	display: flex;
+	list-style-type: none;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+sulvic-paginator .page-indices li {
+	background-color: var(--paginator-button-bg-color);
+	border-style: solid;
+	border-color: var(--paginator-button-border-color);
+	border-width: thin;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+sulvic-paginator .page-indices li a {
+	color: var(--paginator-button-text-color);
+	display: inline-block;
+	font-weight: bold;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	width: 2rem;
+}
+
+sulvic-paginator .page-indices li.active {
+	background-color: var(--paginator-button-bg-active);
+	border-color: var(--paginator-button-border-active);
+}
+
+sulvic-paginator .page-indices li.active a {
+	cursor: text;
+}
+
+sulvic-paginator .page-indices li:not(.active) a:hover {
+	color: var(--paginator-button-text-hover);
+	cursor: pointer;
+}
+
+sulvic-paginator .page-indices li.extras {
+	border-style: none;
+	background-color: transparent;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+sulvic-paginator .page-indices li.extras a {
+	font-weight: normal;
+	cursor: text;
+}
+
+sulvic-paginator .page-indices li.extras a:hover {
+	color: var(--paginator-button-text-color);
+	cursor: text;
+}
+
+sulvic-paginator .page-indices li.hidden {
+	display: none;
+}
+
+.drawer-handler {
+	--svg-text-color: hsl(46, 58%, 86%);
+	--svg-text-hover-color: hsl(158, 58%, 72%);
+}
+
+.drawer-handler #graphic-data {
+	position: relative;
+	transform: perspective(5000px) rotateX(-15deg) rotateY(30deg);
+	transform-origin: center;
+	transform-style: preserve-3d;
+}
+
+.drawer-handler #graphic-data .back {
+	fill: url(#bg-base);
+	position: absolute;
+	transform: translateZ(-5px);
+	z-index: 0;
+}
+
+.drawer-handler #graphic-data .site-text {
+	fill: var(--svg-text-color);
+	font-size: 120px;
+	line-height: 120px;
+	position: absolute;
+	text-shadow: 0 0 0.1rem black;
+	transform: scale(0.7) translate3d(135px, 95px, 5px);
+}
+
+.drawer-handler #graphic-data:hover .back {
+	fill: url(#bg-base-hover);
+}
+
+.drawer-handler #graphic-data:hover .site-text {
+	fill: var(--svg-text-hover-color);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: hsl(0, 0%, 10%);
+		--border-color: hsl(0, 0%, 45%);
+		--border-search-bg: hsl(0, 0%, 35%);
+		--border-search-color: hsl(0, 0%, 5%);
+		--drawer-bg-color: hsl(0, 0%, 35%);
+		--drawer-link-img: linear-gradient(to bottom, transparent, hsla(0, 100%, 100%, 0.25), hsla(0, 100%, 100%, 0.25), transparent);
+		--field-color: hsl(0, 0%, 25%);
+		--footer-bg-color: hsl(0, 0%, 50%);
+		--footer-bg-color: hsl(0, 0%, 2.5%);
+		--footer-link-color: hsl(200, 60%, 48%);
+		--gradle-bg-color: hsl(0, 0%, 25%);
+		--header-bg-color: hsl(0, 0%, 20%);
+		--link-color: hsl(50, 74%, 46%);
+		--maven-link-color: hsl(32, 100%, 34%);
+		--paginator-button-bg-active: hsl(0, 0%, 65%);
+		--paginator-button-bg-color: hsl(0, 0%, 25%);
+		--paginator-button-border-active: hsl(0, 0%, 50%);
+		--paginator-button-border-color: hsl(0, 0%, 40%);
+		--paginator-button-text-active: hsl(220, 80%, 62%);
+		--paginator-button-text-color: hsl(240, 60%, 74%);
+		--paginator-button-text-hover: hsl(240, 50%, 84%);
+		--search-icon-color: hsl(0, 0%, 70%);
+		--text-color: hsl(29, 42%, 82%);
+		--scrollbar-main-color: hsl(0, 0%, 20%);
+		--scrollbar-second-color: hsl(0, 0%, 55%);
+	}
+
+	.drawer-handler {
+		--svg-text-color: hsl(158, 58%, 36%);
+		--svg-text-hover-color: hsl(46, 58%, 43%);
+	}
+
+	.drawer-handler #graphic-data .back {
+		fill: url(#bg-dark);
+		position: absolute;
+		transform: translateZ(-5px);
+		z-index: 0;
+	}
+
+	.drawer-handler #graphic-data:hover .back {
+		fill: url(#bg-dark-hover);
+	}
+
+}

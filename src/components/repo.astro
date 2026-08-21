@@ -1,0 +1,29 @@
+---
+interface Props{
+	mavenPath: string;
+	mavenName: string;
+	mavenVersion: string;
+}
+
+const {
+	mavenPath,
+	mavenName,
+	mavenVersion
+} = Astro.props;
+
+const mavenBaseLink = `${mavenPath.replaceAll('.', '/')}/${mavenVersion}/${mavenName}/${mavenVersion}`;
+---
+
+<sulvic-gradle>
+	<span class="path">{mavenPath}</span>
+	<div class="base-info">
+		<span class="name">{mavenName}</span>
+		<span class="version">{mavenVersion}</span>
+	</div>
+	<div class="links">
+		<div><a href=`maven/${mavenBaseLink}.jar`>Binary</a></div>
+		<div><a href=`maven/${mavenBaseLink}-sources.jar`>Source</a></div>
+		<div><a href=`maven/${mavenBaseLink}-javadocs.jar`>Javadocs</a></div>
+		<div><a href=`maven/${mavenBaseLink}.pom`>Pom</a></div>
+	</div>
+</sulvic-gradle>

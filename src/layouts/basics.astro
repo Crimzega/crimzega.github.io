@@ -1,0 +1,67 @@
+---
+import type { string } from 'astro:schema'
+import Header from "../components/header.astro"
+import Drawer from "../components/drawer.astro"
+import Footer from "../components/footer.astro"
+import Paginator from "../components/paginator.astro"
+import Video from "../components/video.astro"
+
+interface Props {
+	pageTitle?: string;
+	description?: string;
+	keywords?: string;
+	pageInfo?: string;
+}
+
+const {
+	pageTitle = "Main Page",
+	description = "The main site that houses all of Crimzega's content and links to their official external download links ever made.",
+	keywords = "Crimzega Sulvic, MrSulvic, CDS, Crimzega's Website, Sulvic Website, MrSulvic's Website, CDS Site",
+	pageInfo = "What's new on the Website?"
+} = Astro.props;
+
+const siteName = "Crimzega's Website";
+const fullTitle = pageTitle.trim()? `${siteName} | ${pageTitle.trim()}`: siteName;
+
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<base href="/" />
+		<link href="styles/site-common.css" rel="stylesheet" />
+		<link href="https://crimzega.github.io/" rel="canonical" />
+		<link href="images/apple-icon-192.png" rel="apple-touch-icon" sizes="192x192" />
+		<link href="images/icon.png" rel="icon" />
+		<meta charset="utf-8" content="Crimzega Sulvic" name="author" />
+		<meta content={description} name="description" />
+		<meta content={keywords} name="keywords" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content={description} name="og:description" />
+		<meta content="images/icon.png" name="og:image" />
+		<meta content={siteName} name="og:title" />
+		<meta content="website" name="og:type" />
+		<meta content="https://crimzega.github.io/" name="og:url" />
+		<meta content={siteName} name="twitter:title" />
+		<meta content={description} name="twitter:description" />
+		<meta content="hsl(194, 40%, 62%)" name="theme-color" />
+		<meta content="noindex, nofollow" name="robots" />
+		<title>{fullTitle}</title>
+	</head>
+	<body>
+		<sulvic-container>
+			<Header></Header>
+			<sulvic-content>
+				<Drawer></Drawer>
+				<main-content>
+					<h1>{pageInfo}</h1>
+					<hr />
+					<slot />
+				</main-content>
+			</sulvic-content>
+			<Footer></Footer>
+		</sulvic-container>
+		<script is:inline src="/scripts/site-common.js"></script>
+		<script is:inline src="/scripts/paginator-elem.js"></script>
+		<script is:inline src="/scripts/video-elem.js"></script>
+	</body>
+</html>

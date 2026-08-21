@@ -1,5 +1,0 @@
-User-Agent: *
-Disallow: /defs/php/
-Disallow: /exts/
-Disallow: /testing/
-Disallow: /maven/

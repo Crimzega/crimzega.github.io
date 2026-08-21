@@ -1,0 +1,14 @@
+:root {
+	--error-bg-color: hsl(0, 0%, 80%);
+	--error-bg-img: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25)), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(0, 0, 0, 0.25));
+	--error-hr-border-color: hsl(0, 0%, 75%);
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root {
+		--error-bg-color: hsl(0, 0%, 20%);
+		--error-bg-img: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25)), linear-gradient(to left, rgba(255, 255, 255, 0.25), transparent 20px, transparent calc(100% - 20px), rgba(255, 255, 255, 0.25));
+		--error-hr-border-color: hsl(0, 0%, 40%);
+	}
+}
